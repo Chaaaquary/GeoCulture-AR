@@ -989,22 +989,30 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
   </div>
 
   <!-- AR SCANNER MODAL -->
-  <div id="ar-scanner-modal" style="display:none;">
+  <div id="ar-scanner-modal" style="display:none; position:fixed; inset:0; background:#000; z-index:600; flex-direction:column; align-items:center; justify-content:center;">
     <div class="scanner-header">
       <span class="scanner-title">📷 AR Scanner</span>
       <button class="btn-close-scanner" onclick="closeARScannerModal()">✕ Tutup</button>
     </div>
-    <div class="scanner-video-wrap" id="scanner-wrap">
-      <video id="scanner-video" autoplay playsinline muted></video>
+    <!-- Video + canvas overlay untuk ZXing -->
+    <div class="scanner-video-wrap" id="scanner-wrap" style="position:relative; width:100%; max-width:430px; height:100vh; overflow:hidden;">
+      <video id="scanner-video" autoplay playsinline muted style="width:100%; height:100%; object-fit:cover; opacity:0.92;"></video>
+      <canvas id="scanner-canvas" style="display:none;"></canvas>
+
+      <!-- Bingkai scan -->
       <div class="scan-frame" id="scan-frame">
         <div class="scan-box"><div class="scan-box-inner"></div><div class="scan-line"></div></div>
-        <p class="scan-hint">Arahkan kamera ke barcode AR<br>pada objek budaya fisik</p>
+        <p class="scan-hint" id="scan-hint-text">Arahkan kamera ke QR Code<br>pada objek budaya</p>
       </div>
+
+      <!-- Fallback no-cam -->
       <div class="scanner-nocam hidden" id="scanner-nocam">
         <div class="nocam-icon">📷</div>
         <div class="nocam-title">Kamera Tidak Tersedia</div>
-        <div class="nocam-desc">Izin kamera diperlukan atau perangkat tidak mendukung. Coba simulasi scan di bawah.</div>
+        <div class="nocam-desc">Izin kamera diperlukan. Gunakan tombol simulasi di bawah.</div>
       </div>
+
+      <!-- Overlay hasil scan -->
       <div class="scan-result-overlay hidden" id="scan-result-overlay">
         <div class="scan-result-card">
           <div class="scan-result-emoji" id="sr-emoji"></div>
@@ -1012,19 +1020,24 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
           <div class="scan-result-name" id="sr-name"></div>
           <div class="scan-result-shape" id="sr-shape"></div>
           <p class="scan-result-desc" id="sr-desc"></p>
-          <button class="btn-scan-close" onclick="closeScanResult()">✅ Tutup Hasil Scan</button>
+          <div id="sr-raw" style="font-size:10px;color:#aaa;margin-bottom:10px;word-break:break-all;"></div>
+          <button class="btn-scan-close" onclick="closeScanResult()">✅ Lanjut Scan</button>
         </div>
       </div>
     </div>
+
     <div class="scanner-footer">
       <div class="scanner-status" id="scanner-status">Menginisialisasi kamera...</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
-        <button onclick="simulateScan('rumah')" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;border-radius:20px;padding:6px 12px;font-size:11px;font-family:Poppins,sans-serif;font-weight:600;cursor:pointer;">🏠 Rumah</button>
-        <button onclick="simulateScan('onde')" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;border-radius:20px;padding:6px 12px;font-size:11px;font-family:Poppins,sans-serif;font-weight:600;cursor:pointer;">🟢 Onde</button>
-        <button onclick="simulateScan('lammang')" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;border-radius:20px;padding:6px 12px;font-size:11px;font-family:Poppins,sans-serif;font-weight:600;cursor:pointer;">🎋 Lammang</button>
-        <button onclick="simulateScan('topi')" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;border-radius:20px;padding:6px 12px;font-size:11px;font-family:Poppins,sans-serif;font-weight:600;cursor:pointer;">👒 Topi</button>
-        <button onclick="simulateScan('rokoroko')" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;border-radius:20px;padding:6px 12px;font-size:11px;font-family:Poppins,sans-serif;font-weight:600;cursor:pointer;">🍃 Roko Roko</button>
-        <button onclick="simulateScan('bakul')" style="background:rgba(8,145,178,0.3);border:1px solid rgba(8,145,178,0.6);color:#fff;border-radius:20px;padding:6px 12px;font-size:11px;font-family:Poppins,sans-serif;font-weight:700;cursor:pointer;">🧺 Bakul</button>
+      <div style="font-size:10px;color:rgba(255,255,255,0.5);text-align:center;margin-bottom:6px;">
+        Buat QR code di <strong style="color:rgba(255,255,255,0.7)">qr-code-generator.com</strong> dengan teks: <code style="color:var(--gold)">geoculture:rumah</code>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">
+        <button onclick="simulateScan('rumah')" style="background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.25);color:#fff;border-radius:20px;padding:5px 10px;font-size:10px;font-family:Poppins,sans-serif;font-weight:600;cursor:pointer;">🏠 Rumah</button>
+        <button onclick="simulateScan('onde')" style="background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.25);color:#fff;border-radius:20px;padding:5px 10px;font-size:10px;font-family:Poppins,sans-serif;font-weight:600;cursor:pointer;">🟢 Onde</button>
+        <button onclick="simulateScan('lammang')" style="background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.25);color:#fff;border-radius:20px;padding:5px 10px;font-size:10px;font-family:Poppins,sans-serif;font-weight:600;cursor:pointer;">🎋 Lammang</button>
+        <button onclick="simulateScan('topi')" style="background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.25);color:#fff;border-radius:20px;padding:5px 10px;font-size:10px;font-family:Poppins,sans-serif;font-weight:600;cursor:pointer;">👒 Topi</button>
+        <button onclick="simulateScan('rokoroko')" style="background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.25);color:#fff;border-radius:20px;padding:5px 10px;font-size:10px;font-family:Poppins,sans-serif;font-weight:600;cursor:pointer;">🍃 Roko</button>
+        <button onclick="simulateScan('bakul')" style="background:rgba(8,145,178,0.28);border:1px solid rgba(8,145,178,0.55);color:#fff;border-radius:20px;padding:5px 10px;font-size:10px;font-family:Poppins,sans-serif;font-weight:700;cursor:pointer;">🧺 Bakul</button>
       </div>
     </div>
   </div>
@@ -1073,56 +1086,162 @@ function showARDetail(key) {
 function closeARModal() { document.getElementById('ar-modal').classList.add('hidden'); }
 function closeModal(e) { if (e.target === document.getElementById('ar-modal')) closeARModal(); }
 
-/* ===== AR SCANNER ===== */
+/* ===== AR SCANNER — ZXing real QR/barcode reader ===== */
 let cameraStream = null;
+let zxingReader = null;
+let scanLoop = null;
+let scanCooldown = false;
+
+const qrKeyMap = {
+  'geoculture:rumah':'rumah','geoculture:onde':'onde','geoculture:lammang':'lammang',
+  'geoculture:topi':'topi','geoculture:rokoroko':'rokoroko','geoculture:bakul':'bakul',
+  'rumah':'rumah','onde':'onde','lammang':'lammang','topi':'topi','rokoroko':'rokoroko','bakul':'bakul',
+  'rumah adat bugis':'rumah','onde onde':'onde','topi petani':'topi','roko roko':'rokoroko','roko-roko':'rokoroko'
+};
+
+function resolveQRKey(rawText) {
+  const t = rawText.trim().toLowerCase();
+  if (qrKeyMap[t]) return qrKeyMap[t];
+  const kws = ['rumah','onde','lammang','topi','rokoroko','roko','bakul'];
+  for (const kw of kws) { if (t.includes(kw)) return kw === 'roko' ? 'rokoroko' : kw; }
+  return null;
+}
+
+async function loadZXing() {
+  return new Promise((resolve, reject) => {
+    if (window.ZXing) { resolve(window.ZXing); return; }
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/@zxing/library@0.21.3/umd/index.min.js';
+    s.onload = () => { if (window.ZXing) resolve(window.ZXing); else reject(new Error('ZXing tidak tersedia')); };
+    s.onerror = () => reject(new Error('Gagal memuat ZXing'));
+    document.head.appendChild(s);
+  });
+}
+
 async function openARScan() {
   closeARModal();
   const modal = document.getElementById('ar-scanner-modal');
   modal.style.display = 'flex';
   modal.style.flexDirection = 'column';
   document.getElementById('scan-result-overlay').classList.add('hidden');
-  document.getElementById('scanner-status').textContent = 'Menginisialisasi kamera...';
+  document.getElementById('scanner-status').textContent = 'Memuat library scanner...';
+  document.getElementById('scan-frame').classList.remove('hidden');
+  document.getElementById('scanner-nocam').classList.add('hidden');
+  scanCooldown = false;
+
   try {
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
-      cameraStream = stream;
-      const video = document.getElementById('scanner-video');
-      video.srcObject = stream;
-      video.style.display = 'block';
-      document.getElementById('scan-frame').classList.remove('hidden');
-      document.getElementById('scanner-nocam').classList.add('hidden');
-      document.getElementById('scanner-status').textContent = 'Kamera aktif · Arahkan ke barcode AR atau pilih simulasi';
-    } else { showNoCameraFallback(); }
-  } catch { showNoCameraFallback(); }
+    const ZXing = await loadZXing();
+    document.getElementById('scanner-status').textContent = 'Membuka kamera...';
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 720 } }
+    });
+    cameraStream = stream;
+    const video = document.getElementById('scanner-video');
+    video.srcObject = stream;
+    video.style.display = 'block';
+    await new Promise(r => { video.onloadedmetadata = r; });
+    video.play();
+    document.getElementById('scanner-status').textContent = '🔍 Arahkan kamera ke QR Code objek budaya...';
+    startScanLoop(video, ZXing);
+  } catch (err) {
+    console.warn(err);
+    showNoCameraFallback(err.message);
+  }
 }
-function showNoCameraFallback() {
-  document.getElementById('scanner-video').style.display = 'none';
-  document.getElementById('scan-frame').classList.add('hidden');
-  document.getElementById('scanner-nocam').classList.remove('hidden');
-  document.getElementById('scanner-status').textContent = 'Gunakan tombol simulasi di bawah';
+
+function startScanLoop(video, ZXing) {
+  if (scanLoop) { cancelAnimationFrame(scanLoop); scanLoop = null; }
+  const canvas = document.getElementById('scanner-canvas');
+  const ctx = canvas.getContext('2d');
+  const hints = new Map();
+  hints.set(ZXing.DecodeHintType.POSSIBLE_FORMATS, [
+    ZXing.BarcodeFormat.QR_CODE, ZXing.BarcodeFormat.CODE_128,
+    ZXing.BarcodeFormat.CODE_39, ZXing.BarcodeFormat.EAN_13,
+    ZXing.BarcodeFormat.DATA_MATRIX, ZXing.BarcodeFormat.AZTEC
+  ]);
+  hints.set(ZXing.DecodeHintType.TRY_HARDER, true);
+  const mfReader = new ZXing.MultiFormatReader();
+  mfReader.setHints(hints);
+  let frame = 0;
+  function tick() {
+    if (!cameraStream) return;
+    frame++;
+    if (frame % 3 === 0 && video.readyState >= 2 && !scanCooldown) {
+      canvas.width = video.videoWidth || 640;
+      canvas.height = video.videoHeight || 480;
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      try {
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const lum = new ZXing.RGBLuminanceSource(imgData.data, canvas.width, canvas.height);
+        const bin = new ZXing.BinaryBitmap(new ZXing.HybridBinarizer(lum));
+        const result = mfReader.decode(bin);
+        if (result && result.getText) handleScanResult(result.getText());
+      } catch (_) { /* NotFoundException — normal */ }
+    }
+    scanLoop = requestAnimationFrame(tick);
+  }
+  tick();
 }
-function closeARScannerModal() {
-  if (cameraStream) { cameraStream.getTracks().forEach(t => t.stop()); cameraStream = null; }
-  document.getElementById('scanner-video').srcObject = null;
-  document.getElementById('ar-scanner-modal').style.display = 'none';
-}
-function simulateScan(key) {
-  const d = arData[key];
-  if (!d) return;
-  document.getElementById('scanner-status').textContent = '🔍 Mendeteksi barcode...';
-  setTimeout(() => {
-    document.getElementById('scanner-status').textContent = '✅ Barcode terdeteksi!';
+
+function handleScanResult(rawText) {
+  if (scanCooldown) return;
+  scanCooldown = true;
+  const key = resolveQRKey(rawText);
+  const d = key ? arData[key] : null;
+  if (d) {
     document.getElementById('sr-emoji').textContent = d.emoji;
     document.getElementById('sr-cat').textContent = d.category;
     document.getElementById('sr-name').textContent = d.name;
     document.getElementById('sr-shape').textContent = '📐 ' + d.shapeBadge;
     document.getElementById('sr-desc').textContent = d.desc;
-    document.getElementById('scan-result-overlay').classList.remove('hidden');
-  }, 1200);
+    document.getElementById('sr-raw').textContent = '';
+    document.getElementById('scanner-status').textContent = '✅ Terdeteksi: ' + d.name;
+  } else {
+    document.getElementById('sr-emoji').textContent = '🔍';
+    document.getElementById('sr-cat').textContent = 'QR / Barcode Terbaca';
+    document.getElementById('sr-name').textContent = 'Kode Tidak Dikenali';
+    document.getElementById('sr-shape').textContent = '';
+    document.getElementById('sr-desc').textContent = 'QR terbaca tapi belum cocok dengan objek budaya GeoCulture. Pastikan isi QR adalah: geoculture:rumah (atau onde/lammang/topi/rokoroko/bakul).';
+    document.getElementById('sr-raw').textContent = 'Isi QR: ' + rawText;
+    document.getElementById('scanner-status').textContent = '⚠️ Kode tidak dikenali';
+  }
+  document.getElementById('scan-result-overlay').classList.remove('hidden');
+  setTimeout(() => { scanCooldown = false; }, 4000);
 }
+
+function showNoCameraFallback(msg) {
+  document.getElementById('scanner-video').style.display = 'none';
+  document.getElementById('scan-frame').classList.add('hidden');
+  document.getElementById('scanner-nocam').classList.remove('hidden');
+  const el = document.querySelector('#scanner-nocam .nocam-desc');
+  if (el) el.textContent = (msg ? msg + '. ' : '') + 'Gunakan tombol simulasi di bawah.';
+  document.getElementById('scanner-status').textContent = 'Kamera tidak tersedia';
+}
+
+function closeARScannerModal() {
+  if (scanLoop) { cancelAnimationFrame(scanLoop); scanLoop = null; }
+  if (cameraStream) { cameraStream.getTracks().forEach(t => t.stop()); cameraStream = null; }
+  const video = document.getElementById('scanner-video');
+  if (video) { video.srcObject = null; video.style.display = 'block'; }
+  scanCooldown = false;
+  document.getElementById('ar-scanner-modal').style.display = 'none';
+  document.getElementById('scan-result-overlay').classList.add('hidden');
+}
+
+function simulateScan(key) {
+  if (scanLoop) { cancelAnimationFrame(scanLoop); scanLoop = null; }
+  document.getElementById('scanner-status').textContent = '🔍 Mendeteksi...';
+  setTimeout(() => handleScanResult('geoculture:' + key), 800);
+}
+
 function closeScanResult() {
   document.getElementById('scan-result-overlay').classList.add('hidden');
-  document.getElementById('scanner-status').textContent = 'Kamera aktif · Pilih simulasi';
+  scanCooldown = false;
+  document.getElementById('scanner-status').textContent = '🔍 Arahkan ke QR Code objek budaya...';
+  if (cameraStream && window.ZXing) {
+    const video = document.getElementById('scanner-video');
+    startScanLoop(video, window.ZXing);
+  }
 }
 
 /* ===== BUDAYA TOGGLE ===== */
