@@ -98,9 +98,14 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
 .hero-title { font-size:26px; font-weight:900; color:var(--white); line-height:1.15; letter-spacing:-0.5px; }
 .hero-desc { font-size:13px; color:rgba(255,255,255,0.72); margin-top:6px; font-weight:400; line-height:1.5; }
 .ar-hero { padding-bottom:28px; }
-.btn-ar-main { display:flex; align-items:center; gap:8px; background:var(--grad-gold); color:var(--maroon-dark); border:none; border-radius:var(--radius-full); padding:12px 22px; font-size:15px; font-weight:700; font-family:'Poppins',sans-serif; cursor:pointer; margin-top:16px; box-shadow:0 4px 16px rgba(212,168,67,0.4); transition:transform var(--trans-fast),box-shadow var(--trans-fast); }
+
+/* AR HERO BUTTONS */
+.ar-hero-btns { display:flex; gap:10px; margin-top:16px; flex-wrap:wrap; }
+.btn-ar-main { display:flex; align-items:center; gap:8px; background:var(--grad-gold); color:var(--maroon-dark); border:none; border-radius:var(--radius-full); padding:11px 18px; font-size:14px; font-weight:700; font-family:'Poppins',sans-serif; cursor:pointer; box-shadow:0 4px 16px rgba(212,168,67,0.4); transition:transform var(--trans-fast),box-shadow var(--trans-fast); }
 .btn-ar-main:active { transform:scale(0.96); box-shadow:0 2px 8px rgba(212,168,67,0.3); }
-.btn-icon { font-size:18px; }
+.btn-ar-camera { display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.18); color:var(--white); border:2px solid rgba(255,255,255,0.45); border-radius:var(--radius-full); padding:11px 18px; font-size:14px; font-weight:700; font-family:'Poppins',sans-serif; cursor:pointer; transition:transform var(--trans-fast),background var(--trans-fast); backdrop-filter:blur(4px); }
+.btn-ar-camera:active { transform:scale(0.96); background:rgba(255,255,255,0.28); }
+.btn-icon { font-size:17px; }
 .ar-info { font-size:11px; color:rgba(255,255,255,0.6); margin-top:10px; font-style:italic; line-height:1.4; }
 
 /* MATERI ACCORDION */
@@ -151,335 +156,285 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
 .pembahasan p { font-size:12px; color:var(--gray-600); line-height:1.5; }
 .budaya-hint { font-size:11.5px; background:rgba(212,168,67,0.12); border:1px solid rgba(212,168,67,0.3); border-radius:var(--radius-sm); padding:7px 11px; color:#7a5a00; font-weight:500; }
 
-/* =============================================
-   3D SHAPES - CSS preserve-3d (semua konsisten)
-   ============================================= */
-.shape3d-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 16px 0 20px;
-  margin-bottom: 8px;
-  height: 140px;
-}
-
-/* --- KUBUS --- */
-.scene-kubus {
-  width: 90px; height: 90px;
-  perspective: 300px;
-  perspective-origin: 50% 50%;
-}
-.kubus3d {
-  width: 90px; height: 90px;
-  position: relative;
-  transform-style: preserve-3d;
-  animation: spinKubus 6s linear infinite;
-}
-@keyframes spinKubus {
-  from { transform: rotateX(-25deg) rotateY(0deg); }
-  to   { transform: rotateX(-25deg) rotateY(360deg); }
-}
-.k-face {
-  position: absolute;
-  width: 90px; height: 90px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 700;
-  border: 2px solid rgba(8,145,178,0.75);
-  backface-visibility: visible;
-}
-.k-front  { background: rgba(8,145,178,0.18); transform: translateZ(45px); color: rgba(8,145,178,1); }
-.k-back   { background: rgba(8,145,178,0.08); transform: rotateY(180deg) translateZ(45px); }
-.k-right  { background: rgba(8,145,178,0.12); transform: rotateY(90deg) translateZ(45px); }
-.k-left   { background: rgba(8,145,178,0.12); transform: rotateY(-90deg) translateZ(45px); }
-.k-top    { background: rgba(8,145,178,0.22); transform: rotateX(90deg) translateZ(45px); }
-.k-bottom { background: rgba(8,145,178,0.06); transform: rotateX(-90deg) translateZ(45px); }
-
-/* --- BALOK --- */
-.scene-balok {
-  width: 130px; height: 80px;
-  perspective: 350px;
-  perspective-origin: 50% 50%;
-}
-.balok3d {
-  width: 130px; height: 80px;
-  position: relative;
-  transform-style: preserve-3d;
-  animation: spinBalok 6s linear infinite;
-}
-@keyframes spinBalok {
-  from { transform: rotateX(-25deg) rotateY(0deg); }
-  to   { transform: rotateX(-25deg) rotateY(360deg); }
-}
-.b-face {
-  position: absolute;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 10px; font-weight: 700;
-  border: 2px solid rgba(123,28,46,0.75);
-}
-/* p=130, l=80, t=55 → translateZ = p/2=65, l/2=40, t/2=27.5 */
-.b-front  { width:130px; height:80px; background:rgba(123,28,46,0.18); transform: translateZ(27px); color:rgba(123,28,46,0.9); }
-.b-back   { width:130px; height:80px; background:rgba(123,28,46,0.07); transform: rotateY(180deg) translateZ(27px); }
-.b-right  { width:55px;  height:80px; background:rgba(123,28,46,0.13); transform: rotateY(90deg) translateZ(65px); left:37px; }
-.b-left   { width:55px;  height:80px; background:rgba(123,28,46,0.10); transform: rotateY(-90deg) translateZ(65px); left:37px; }
-.b-top    { width:130px; height:55px; background:rgba(123,28,46,0.22); transform: rotateX(90deg) translateZ(40px); top:12px; }
-.b-bottom { width:130px; height:55px; background:rgba(123,28,46,0.05); transform: rotateX(-90deg) translateZ(40px); top:12px; }
-
-/* --- PRISMA SEGITIGA --- */
-.scene-prisma {
-  width: 130px; height: 110px;
-  perspective: 350px;
-  perspective-origin: 50% 60%;
-}
-.prisma3d {
-  width: 130px; height: 110px;
-  position: relative;
-  transform-style: preserve-3d;
-  animation: spinPrisma 6s linear infinite;
-}
-@keyframes spinPrisma {
-  from { transform: rotateX(-20deg) rotateY(0deg); }
-  to   { transform: rotateX(-20deg) rotateY(360deg); }
-}
-/* Prisma segitiga: alas siku-siku 80×60, depth 60 */
-/* Wajah depan & belakang = segitiga, digambar pakai clip-path */
-.p-face {
-  position: absolute;
-  border: 2px solid rgba(123,28,46,0.75);
-}
-.p-front {
-  width: 80px; height: 60px;
-  background: rgba(123,28,46,0.20);
-  clip-path: polygon(0% 100%, 100% 100%, 0% 0%);
-  transform: translateZ(30px);
-  left: 25px; top: 25px;
-}
-.p-back {
-  width: 80px; height: 60px;
-  background: rgba(123,28,46,0.08);
-  clip-path: polygon(0% 100%, 100% 100%, 0% 0%);
-  transform: rotateY(180deg) translateZ(30px);
-  left: 25px; top: 25px;
-}
-/* Sisi bawah (persegi panjang alas) */
-.p-bottom {
-  width: 80px; height: 60px;
-  background: rgba(123,28,46,0.15);
-  transform: rotateX(-90deg) translateZ(0px);
-  left: 25px; top: 55px;
-}
-/* Sisi kiri vertikal */
-.p-left-v {
-  width: 60px; height: 60px;
-  background: rgba(123,28,46,0.22);
-  transform: rotateY(90deg) translateZ(25px);
-  left: 25px; top: 25px;
-}
-/* Sisi miring (hypotenuse) */
-.p-slope {
-  width: 100px; height: 60px;
-  background: rgba(123,28,46,0.10);
-  transform: rotateY(180deg) rotateX(-53deg) translateZ(-30px);
-  left: 15px; top: 0px;
-}
-
-/* --- TABUNG (CSS 3D) --- */
-.scene-tabung {
-  width: 100px; height: 120px;
-  perspective: 350px;
-  perspective-origin: 50% 50%;
-}
-.tabung3d {
-  width: 100px; height: 120px;
-  position: relative;
-  transform-style: preserve-3d;
-  animation: spinTabung 6s linear infinite;
-}
-@keyframes spinTabung {
-  from { transform: rotateX(-15deg) rotateY(0deg); }
-  to   { transform: rotateX(-15deg) rotateY(360deg); }
-}
-/* Simulasi tabung dengan banyak face tipis */
-.t-ring {
-  position: absolute;
-  width: 100px; height: 100px;
-  border-radius: 50%;
-  border: 2px solid rgba(37,99,235,0.7);
-}
-.t-top {
-  background: rgba(37,99,235,0.25);
-  transform: rotateX(90deg) translateZ(60px);
-  top: 10px;
-}
-.t-bottom {
-  background: rgba(37,99,235,0.15);
-  transform: rotateX(90deg) translateZ(-40px);
-  top: 10px;
-}
-/* Sisi silinder: 16 panel */
-.t-panel {
-  position: absolute;
-  width: 20px; height: 100px;
-  background: rgba(37,99,235,0.14);
-  border-left: 1px solid rgba(37,99,235,0.5);
-  top: 10px; left: 40px;
-  transform-style: preserve-3d;
-}
-
-/* --- LIMAS SEGIEMPAT --- */
-.scene-limas {
-  width: 110px; height: 120px;
-  perspective: 350px;
-  perspective-origin: 50% 60%;
-}
-.limas3d {
-  width: 110px; height: 120px;
-  position: relative;
-  transform-style: preserve-3d;
-  animation: spinLimas 6s linear infinite;
-}
-@keyframes spinLimas {
-  from { transform: rotateX(-20deg) rotateY(0deg); }
-  to   { transform: rotateX(-20deg) rotateY(360deg); }
-}
-/* Alas persegi 80×80, tinggi 70 */
-.l-base {
-  position: absolute;
-  width: 80px; height: 80px;
-  background: rgba(22,163,74,0.20);
-  border: 2px solid rgba(22,163,74,0.75);
-  transform: rotateX(90deg) translateZ(-35px);
-  left: 15px; top: 20px;
-}
-/* 4 sisi segitiga — masing2 rotate lalu translateZ ke luar */
-.l-side {
-  position: absolute;
-  width: 80px; height: 70px;
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  border: none;
-}
-.l-s1 {
-  background: rgba(22,163,74,0.22);
-  border: 2px solid rgba(22,163,74,0.8);
-  outline: 2px solid rgba(22,163,74,0.8);
-  transform: rotateX(52deg) translateZ(25px);
-  left: 15px; top: 15px;
-}
-.l-s2 {
-  background: rgba(22,163,74,0.14);
-  transform: rotateX(52deg) rotateY(90deg) translateZ(25px);
-  left: 15px; top: 15px;
-}
-.l-s3 {
-  background: rgba(22,163,74,0.18);
-  transform: rotateX(52deg) rotateY(180deg) translateZ(25px);
-  left: 15px; top: 15px;
-}
-.l-s4 {
-  background: rgba(22,163,74,0.10);
-  transform: rotateX(52deg) rotateY(270deg) translateZ(25px);
-  left: 15px; top: 15px;
-}
-
-/* --- KERUCUT --- */
-.scene-kerucut {
-  width: 100px; height: 120px;
-  perspective: 350px;
-  perspective-origin: 50% 60%;
-}
-.kerucut3d {
-  width: 100px; height: 120px;
-  position: relative;
-  transform-style: preserve-3d;
-  animation: spinKerucut 6s linear infinite;
-}
-@keyframes spinKerucut {
-  from { transform: rotateX(-15deg) rotateY(0deg); }
-  to   { transform: rotateX(-15deg) rotateY(360deg); }
-}
-.c-base {
-  position: absolute;
-  width: 90px; height: 90px;
-  border-radius: 50%;
-  background: rgba(234,88,12,0.20);
-  border: 2px solid rgba(234,88,12,0.75);
-  transform: rotateX(90deg) translateZ(-30px);
-  left: 5px; top: 15px;
-}
-/* Kerucut: 16 segmen segitiga */
-.c-seg {
-  position: absolute;
-  width: 0; height: 0;
-  border-left: 0px solid transparent;
-  border-right: 0px solid transparent;
-  top: 10px; left: 50px;
-  transform-style: preserve-3d;
-}
-/* Representasi kerucut pakai clip-path pada div tipis */
-.c-cone {
-  position: absolute;
-  width: 90px; height: 95px;
-  background: linear-gradient(to bottom, rgba(234,88,12,0.8) 0%, rgba(234,88,12,0.1) 100%);
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  border-radius: 0;
-  top: 10px; left: 5px;
-}
-.c-cone-side {
-  position: absolute;
-  width: 90px; height: 95px;
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-}
-
-/* --- BOLA --- */
-.scene-bola {
-  width: 100px; height: 100px;
-}
-.bola3d {
-  width: 100px; height: 100px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 32%, rgba(180,140,255,0.9) 0%, rgba(139,92,246,0.85) 35%, rgba(74,20,114,0.95) 100%);
-  box-shadow:
-    inset -10px -10px 20px rgba(0,0,0,0.4),
-    inset 8px 8px 16px rgba(255,255,255,0.25),
-    0 8px 24px rgba(139,92,246,0.45);
-  position: relative;
-  overflow: hidden;
-  animation: pulseBola 3s ease-in-out infinite;
-}
-@keyframes pulseBola {
-  0%, 100% { box-shadow: inset -10px -10px 20px rgba(0,0,0,0.4), inset 8px 8px 16px rgba(255,255,255,0.25), 0 8px 24px rgba(139,92,246,0.45); }
-  50%       { box-shadow: inset -6px -6px 14px rgba(0,0,0,0.3),  inset 10px 10px 20px rgba(255,255,255,0.30), 0 12px 32px rgba(139,92,246,0.6); }
-}
-.bola3d::before {
-  content: '';
-  position: absolute;
-  width: 55%; height: 45%;
-  top: 7%; left: 8%;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.22);
-  transform: rotate(-30deg);
-  filter: blur(3px);
-}
-/* Garis lintang & bujur untuk efek 3D bola */
-.bola3d::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,0.15);
-  background:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 30px,
-      rgba(255,255,255,0.06) 30px,
-      rgba(255,255,255,0.06) 31px
-    );
-}
+/* 3D SHAPES */
+.shape3d-wrap { display:flex; justify-content:center; align-items:center; padding:16px 0 20px; margin-bottom:8px; height:140px; }
+.scene-kubus { width:90px; height:90px; perspective:300px; perspective-origin:50% 50%; }
+.kubus3d { width:90px; height:90px; position:relative; transform-style:preserve-3d; animation:spinKubus 6s linear infinite; }
+@keyframes spinKubus { from{transform:rotateX(-25deg) rotateY(0deg)} to{transform:rotateX(-25deg) rotateY(360deg)} }
+.k-face { position:absolute; width:90px; height:90px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; border:2px solid rgba(8,145,178,0.75); backface-visibility:visible; }
+.k-front { background:rgba(8,145,178,0.18); transform:translateZ(45px); color:rgba(8,145,178,1); }
+.k-back  { background:rgba(8,145,178,0.08); transform:rotateY(180deg) translateZ(45px); }
+.k-right { background:rgba(8,145,178,0.12); transform:rotateY(90deg) translateZ(45px); }
+.k-left  { background:rgba(8,145,178,0.12); transform:rotateY(-90deg) translateZ(45px); }
+.k-top   { background:rgba(8,145,178,0.22); transform:rotateX(90deg) translateZ(45px); }
+.k-bottom{ background:rgba(8,145,178,0.06); transform:rotateX(-90deg) translateZ(45px); }
+.scene-balok { width:130px; height:80px; perspective:350px; perspective-origin:50% 50%; }
+.balok3d { width:130px; height:80px; position:relative; transform-style:preserve-3d; animation:spinBalok 6s linear infinite; }
+@keyframes spinBalok { from{transform:rotateX(-25deg) rotateY(0deg)} to{transform:rotateX(-25deg) rotateY(360deg)} }
+.b-face { position:absolute; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; border:2px solid rgba(123,28,46,0.75); }
+.b-front { width:130px; height:80px; background:rgba(123,28,46,0.18); transform:translateZ(27px); color:rgba(123,28,46,0.9); }
+.b-back  { width:130px; height:80px; background:rgba(123,28,46,0.07); transform:rotateY(180deg) translateZ(27px); }
+.b-right { width:55px; height:80px; background:rgba(123,28,46,0.13); transform:rotateY(90deg) translateZ(65px); left:37px; }
+.b-left  { width:55px; height:80px; background:rgba(123,28,46,0.10); transform:rotateY(-90deg) translateZ(65px); left:37px; }
+.b-top   { width:130px; height:55px; background:rgba(123,28,46,0.22); transform:rotateX(90deg) translateZ(40px); top:12px; }
+.b-bottom{ width:130px; height:55px; background:rgba(123,28,46,0.05); transform:rotateX(-90deg) translateZ(40px); top:12px; }
+.scene-bola { width:100px; height:100px; }
+.bola3d { width:100px; height:100px; border-radius:50%; background:radial-gradient(circle at 35% 32%,rgba(180,140,255,0.9) 0%,rgba(139,92,246,0.85) 35%,rgba(74,20,114,0.95) 100%); box-shadow:inset -10px -10px 20px rgba(0,0,0,0.4),inset 8px 8px 16px rgba(255,255,255,0.25),0 8px 24px rgba(139,92,246,0.45); position:relative; overflow:hidden; animation:pulseBola 3s ease-in-out infinite; }
+@keyframes pulseBola { 0%,100%{box-shadow:inset -10px -10px 20px rgba(0,0,0,0.4),inset 8px 8px 16px rgba(255,255,255,0.25),0 8px 24px rgba(139,92,246,0.45)} 50%{box-shadow:inset -6px -6px 14px rgba(0,0,0,0.3),inset 10px 10px 20px rgba(255,255,255,0.30),0 12px 32px rgba(139,92,246,0.6)} }
+.bola3d::before { content:''; position:absolute; width:55%; height:45%; top:7%; left:8%; border-radius:50%; background:rgba(255,255,255,0.22); transform:rotate(-30deg); filter:blur(3px); }
+.bola3d::after { content:''; position:absolute; inset:0; border-radius:50%; border:1.5px solid rgba(255,255,255,0.15); background:repeating-linear-gradient(0deg,transparent,transparent 30px,rgba(255,255,255,0.06) 30px,rgba(255,255,255,0.06) 31px); }
 
 /* AR SCAN PAGE */
 .section-title { font-size:18px; font-weight:800; color:var(--gray-800); padding:18px 16px 4px; letter-spacing:-0.3px; }
 .section-subtitle { font-size:12px; color:var(--gray-400); padding:0 16px 12px; }
-.ar-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:4px 14px 20px; }
+
+/* ==========================================
+   AR OBJECT CARDS (NEW - Revised Design)
+   ========================================== */
+.ar-objects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 4px 14px 20px;
+}
+
+.ar-obj-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
+  cursor: pointer;
+  transition: transform var(--trans-fast), box-shadow var(--trans-fast);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.ar-obj-card:active { transform: scale(0.97); box-shadow: var(--shadow-md); }
+
+.ar-obj-thumb {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44px;
+  position: relative;
+}
+.ar-obj-thumb .ar-badge-new {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--maroon);
+  color: var(--white);
+  font-size: 8px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.ar-obj-thumb.bg-rumah   { background: linear-gradient(135deg, #7B1C2E1a, #9B29421a); }
+.ar-obj-thumb.bg-topi    { background: linear-gradient(135deg, #d4a8431a, #f5cc6a1a); }
+.ar-obj-thumb.bg-onde    { background: linear-gradient(135deg, #14532d1a, #16a34a1a); }
+.ar-obj-thumb.bg-lammang { background: linear-gradient(135deg, #92400e1a, #d977001a); }
+.ar-obj-thumb.bg-bakul   { background: linear-gradient(135deg, #0e4a5a1a, #0891b21a); }
+.ar-obj-thumb.bg-roko    { background: linear-gradient(135deg, #14532d1a, #4ade801a); }
+
+.ar-obj-info {
+  padding: 10px 12px 6px;
+  flex: 1;
+}
+.ar-obj-category {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--maroon);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+}
+.ar-obj-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-top: 2px;
+  line-height: 1.2;
+}
+.ar-obj-shape {
+  font-size: 10px;
+  color: var(--gray-400);
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+/* AR VIEW button inside card */
+.btn-lihat-ar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 0 10px 10px;
+  padding: 8px 10px;
+  background: var(--grad-main);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: opacity var(--trans-fast), transform var(--trans-fast);
+  text-decoration: none;
+}
+.btn-lihat-ar:active { opacity: 0.85; transform: scale(0.97); }
+
+/* ==========================================
+   CAMERA SECTION
+   ========================================== */
+.camera-section {
+  margin: 0 14px 20px;
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
+}
+
+.camera-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--gray-200);
+}
+.camera-header-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--maroon-pale);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.camera-header-title { font-size: 14px; font-weight: 700; color: var(--gray-800); }
+.camera-header-sub   { font-size: 11px; color: var(--gray-400); margin-top: 1px; }
+
+.camera-preview-wrap {
+  position: relative;
+  width: 100%;
+  background: #111;
+  overflow: hidden;
+  display: none; /* shown when active */
+}
+.camera-preview-wrap.active { display: block; }
+
+#camera-video {
+  width: 100%;
+  display: block;
+  max-height: 260px;
+  object-fit: cover;
+}
+
+/* Scan overlay frame */
+.camera-scan-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.camera-scan-frame {
+  width: 180px;
+  height: 180px;
+  position: relative;
+}
+.camera-scan-frame::before,
+.camera-scan-frame::after,
+.csf-inner::before,
+.csf-inner::after {
+  content: '';
+  position: absolute;
+  width: 36px;
+  height: 36px;
+}
+.camera-scan-frame::before { top:0; left:0; border-top:3px solid var(--gold); border-left:3px solid var(--gold); border-radius:4px 0 0 0; }
+.camera-scan-frame::after  { top:0; right:0; border-top:3px solid var(--gold); border-right:3px solid var(--gold); border-radius:0 4px 0 0; }
+.csf-inner::before { bottom:0; left:0; border-bottom:3px solid var(--gold); border-left:3px solid var(--gold); border-radius:0 0 0 4px; }
+.csf-inner::after  { bottom:0; right:0; border-bottom:3px solid var(--gold); border-right:3px solid var(--gold); border-radius:0 0 4px 0; }
+.camera-scan-line {
+  position: absolute;
+  left: 8px; right: 8px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  animation: camScanMove 2s ease-in-out infinite;
+}
+@keyframes camScanMove { 0%{top:8px;opacity:1} 50%{opacity:0.7} 100%{top:172px;opacity:1} }
+
+.camera-status-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 8px 14px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  font-size: 11px;
+  color: rgba(255,255,255,0.75);
+  font-weight: 500;
+  text-align: center;
+}
+
+.camera-controls {
+  display: flex;
+  gap: 10px;
+  padding: 12px 14px 14px;
+}
+.btn-cam-start {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--maroon-pale);
+  color: var(--maroon);
+  border: 1.5px solid rgba(123,28,46,0.2);
+  border-radius: var(--radius-full);
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+.btn-cam-start:active { background: #f0c0c8; transform: scale(0.97); }
+.btn-cam-start.active-cam {
+  background: #fef2f2;
+  color: var(--red-err);
+  border-color: rgba(239,68,68,0.3);
+}
+
+.btn-cam-capture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--grad-main);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: transform var(--trans-fast), opacity var(--trans-fast);
+  box-shadow: var(--shadow-sm);
+}
+.btn-cam-capture:active { transform: scale(0.96); }
+.btn-cam-capture:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* SCANNER (old ar-grid kept for modal info) */
 .ar-card { background:var(--white); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid var(--gray-200); cursor:pointer; transition:transform var(--trans-fast),box-shadow var(--trans-fast); position:relative; }
 .ar-card:active { transform:scale(0.97); box-shadow:var(--shadow-md); }
 .ar-card-img { position:relative; height:100px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
@@ -495,41 +450,6 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
 .ar-category { font-size:9px; font-weight:700; color:var(--maroon); text-transform:uppercase; letter-spacing:0.5px; display:block; }
 .ar-name { font-size:13px; font-weight:700; color:var(--gray-800); margin-top:2px; line-height:1.2; }
 .ar-scan-btn { font-size:10px; color:var(--maroon); font-weight:600; padding:6px 12px 10px; text-align:right; }
-
-/* AR SCANNER */
-/* scanner modal css removed */
-.scanner-header { position:absolute; top:0; left:0; right:0; padding:16px 18px; display:flex; align-items:center; justify-content:space-between; background:linear-gradient(to bottom,rgba(0,0,0,0.7),transparent); z-index:10; }
-.scanner-title { font-size:16px; font-weight:700; color:#fff; }
-.btn-close-scanner { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:#fff; border-radius:var(--radius-full); padding:6px 14px; font-size:13px; font-weight:600; font-family:'Poppins',sans-serif; cursor:pointer; }
-.scanner-video-wrap { position:relative; width:100%; max-width:430px; height:100vh; overflow:hidden; }
-#scanner-video { width:100%; height:100%; object-fit:cover; opacity:0.9; }
-.scan-frame { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; }
-.scan-box { width:220px; height:220px; position:relative; }
-.scan-box::before,.scan-box::after { content:''; position:absolute; width:40px; height:40px; }
-.scan-box::before { top:0; left:0; border-top:3px solid var(--gold); border-left:3px solid var(--gold); border-radius:4px 0 0 0; }
-.scan-box::after { top:0; right:0; border-top:3px solid var(--gold); border-right:3px solid var(--gold); border-radius:0 4px 0 0; }
-.scan-box-inner::before,.scan-box-inner::after { content:''; position:absolute; width:40px; height:40px; }
-.scan-box-inner::before { bottom:0; left:0; border-bottom:3px solid var(--gold); border-left:3px solid var(--gold); border-radius:0 0 0 4px; }
-.scan-box-inner::after { bottom:0; right:0; border-bottom:3px solid var(--gold); border-right:3px solid var(--gold); border-radius:0 0 4px 0; }
-.scan-line { position:absolute; left:10px; right:10px; height:2px; background:linear-gradient(90deg,transparent,var(--gold),transparent); top:0; animation:scanMove 2s ease-in-out infinite; }
-@keyframes scanMove { 0%{top:10px;opacity:1} 50%{opacity:0.8} 100%{top:210px;opacity:1} }
-.scan-hint { color:rgba(255,255,255,0.8); font-size:13px; font-weight:500; margin-top:20px; text-align:center; padding:0 40px; }
-.scanner-footer { position:absolute; bottom:0; left:0; right:0; padding:20px 20px 36px; background:linear-gradient(to top,rgba(0,0,0,0.8),transparent); display:flex; flex-direction:column; align-items:center; gap:12px; }
-.scanner-status { font-size:12px; color:rgba(255,255,255,0.6); text-align:center; }
-.scan-result-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.7); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:24px; animation:fadeIn 0.3s ease both; }
-@keyframes fadeIn { from{opacity:0} to{opacity:1} }
-.scan-result-card { background:var(--white); border-radius:var(--radius-xl); padding:24px 20px; width:100%; max-width:320px; text-align:center; animation:popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both; }
-@keyframes popIn { from{transform:scale(0.7);opacity:0} to{transform:scale(1);opacity:1} }
-.scan-result-emoji { font-size:52px; margin-bottom:8px; }
-.scan-result-cat { font-size:10px; font-weight:700; color:var(--maroon); text-transform:uppercase; letter-spacing:0.5px; }
-.scan-result-name { font-size:20px; font-weight:800; color:var(--gray-800); margin:4px 0 8px; }
-.scan-result-shape { display:inline-block; background:var(--maroon-pale); color:var(--maroon); font-size:12px; font-weight:700; padding:4px 12px; border-radius:var(--radius-full); margin-bottom:10px; }
-.scan-result-desc { font-size:12.5px; color:var(--gray-600); line-height:1.6; margin-bottom:16px; }
-.btn-scan-close { width:100%; padding:12px; background:var(--grad-main); color:var(--white); border:none; border-radius:var(--radius-full); font-size:14px; font-weight:700; font-family:'Poppins',sans-serif; cursor:pointer; }
-.scanner-nocam { display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; height:100%; gap:16px; padding:32px; }
-.nocam-icon { font-size:64px; }
-.nocam-title { font-size:18px; font-weight:700; color:#fff; text-align:center; }
-.nocam-desc { font-size:13px; color:rgba(255,255,255,0.6); text-align:center; line-height:1.6; }
 
 /* LATIHAN */
 .latihan-hero { background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#7B1C2E 100%); }
@@ -648,6 +568,31 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
 .modal-desc { font-size:13px; color:var(--gray-600); line-height:1.65; margin-bottom:16px; }
 .btn-ar-modal { width:100%; display:flex; align-items:center; justify-content:center; gap:8px; background:var(--grad-main); color:var(--white); border:none; border-radius:var(--radius-full); padding:14px; font-size:15px; font-weight:700; font-family:'Poppins',sans-serif; cursor:pointer; box-shadow:var(--shadow-md); transition:transform var(--trans-fast); }
 .btn-ar-modal:active { transform:scale(0.97); }
+
+/* Toast notification */
+.toast {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(30,30,30,0.92);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  max-width: 90vw;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
 .page-container::-webkit-scrollbar { display:none; }
 .page-container { -ms-overflow-style:none; scrollbar-width:none; }
   </style>
@@ -734,50 +679,154 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
         </div>
       </section>
 
-      <!-- PAGE: AR SCAN -->
+      <!-- PAGE: AR SCAN (REVISED) -->
       <section id="page-ar" class="page">
         <div class="page-hero ar-hero">
           <div class="hero-badge">📷 Teknologi AR</div>
           <h2 class="hero-title">AR Scan</h2>
-          <p class="hero-desc">Pindai QR code pada objek budaya menggunakan Google Lens</p>
-          <button class="btn-ar-main" onclick="openGoogleLens()">
-            <span class="btn-icon">📷</span><span>Buka Google Lens</span>
-          </button>
-          <p class="ar-info">Tekan tombol di atas untuk membuka Google Lens, lalu arahkan ke QR code pada objek budaya</p>
+          <p class="hero-desc">Pilih objek budaya lalu klik "Lihat AR" — atau gunakan kamera perangkat untuk scan langsung</p>
+          <div class="ar-hero-btns">
+            <button class="btn-ar-main" onclick="openGoogleSearch()">
+              <span class="btn-icon">🔍</span><span>Cari di Google</span>
+            </button>
+            <button class="btn-ar-camera" onclick="toggleCamera()">
+              <span class="btn-icon">📷</span><span id="cam-btn-label">Buka Kamera</span>
+            </button>
+          </div>
+          <p class="ar-info">Tap "Lihat AR" pada setiap objek di bawah untuk langsung membuka konten AR</p>
         </div>
+
+        <!-- KAMERA SECTION -->
+        <div class="camera-section">
+          <div class="camera-header">
+            <div class="camera-header-icon">📷</div>
+            <div>
+              <div class="camera-header-title">Kamera Perangkat</div>
+              <div class="camera-header-sub">Aktifkan kamera untuk scan objek AR secara langsung</div>
+            </div>
+          </div>
+          <div id="camera-preview-wrap" class="camera-preview-wrap">
+            <video id="camera-video" autoplay playsinline muted></video>
+            <div class="camera-scan-overlay">
+              <div class="camera-scan-frame">
+                <div class="csf-inner"></div>
+                <div class="camera-scan-line"></div>
+              </div>
+            </div>
+            <div class="camera-status-bar" id="cam-status">🎯 Arahkan kamera ke QR code atau objek AR</div>
+          </div>
+          <div class="camera-controls">
+            <button class="btn-cam-start" id="btn-cam-toggle" onclick="toggleCamera()">
+              <span>📷</span> <span id="cam-toggle-label">Aktifkan Kamera</span>
+            </button>
+            <button class="btn-cam-capture" id="btn-cam-capture" onclick="capturePhoto()" disabled>
+              <span>📸</span> Tangkap
+            </button>
+          </div>
+        </div>
+
+        <!-- OBJEK AR GRID -->
         <h3 class="section-title">Objek Budaya AR</h3>
-        <p class="section-subtitle">Tap card untuk detail, lalu scan QR dengan Google Lens!</p>
-        <div class="ar-grid">
-          <div class="ar-card" onclick="showARDetail('rumah')">
-            <div class="ar-card-img"><div class="ar-img-placeholder rumah-bg">🏠</div><div class="ar-badge">Rumah Adat</div></div>
-            <div class="ar-card-info"><span class="ar-category">RUMAH ADAT</span><p class="ar-name">Rumah Adat Bugis</p></div>
-            <div class="ar-scan-btn">Scan QR →</div>
+        <p class="section-subtitle">Tap <strong>Lihat AR</strong> untuk langsung membuka konten augmented reality!</p>
+
+        <div class="ar-objects-grid">
+
+          <!-- Rumah Adat Bugis -->
+          <div class="ar-obj-card">
+            <div class="ar-obj-thumb bg-rumah">
+              🏠
+              <div class="ar-badge-new">Rumah Adat</div>
+            </div>
+            <div class="ar-obj-info">
+              <span class="ar-obj-category">Arsitektur</span>
+              <div class="ar-obj-name">Rumah Adat Bugis</div>
+              <div class="ar-obj-shape">📐 Prisma + Balok</div>
+            </div>
+            <a class="btn-lihat-ar" href="https://asblr.com/tXFXoW" target="_blank" rel="noopener">
+              🔮 Lihat AR
+            </a>
           </div>
-          <div class="ar-card" onclick="showARDetail('onde')">
-            <div class="ar-card-img"><div class="ar-img-placeholder onde-bg">🟢</div><div class="ar-badge">Makanan</div></div>
-            <div class="ar-card-info"><span class="ar-category">MAKANAN TRADISIONAL</span><p class="ar-name">Onde Onde</p></div>
-            <div class="ar-scan-btn">Scan QR →</div>
+
+          <!-- Topi Petani -->
+          <div class="ar-obj-card">
+            <div class="ar-obj-thumb bg-topi">
+              👒
+              <div class="ar-badge-new">Alat</div>
+            </div>
+            <div class="ar-obj-info">
+              <span class="ar-obj-category">Alat Tradisional</span>
+              <div class="ar-obj-name">Topi Petani</div>
+              <div class="ar-obj-shape">📐 Kerucut</div>
+            </div>
+            <a class="btn-lihat-ar" href="https://asblr.com/QNzyS4" target="_blank" rel="noopener">
+              🔮 Lihat AR
+            </a>
           </div>
-          <div class="ar-card" onclick="showARDetail('lammang')">
-            <div class="ar-card-img"><div class="ar-img-placeholder lammang-bg">🎋</div><div class="ar-badge">Makanan</div></div>
-            <div class="ar-card-info"><span class="ar-category">MAKANAN TRADISIONAL</span><p class="ar-name">Lammang</p></div>
-            <div class="ar-scan-btn">Scan QR →</div>
+
+          <!-- Onde-Onde -->
+          <div class="ar-obj-card">
+            <div class="ar-obj-thumb bg-onde">
+              🟢
+              <div class="ar-badge-new">Makanan</div>
+            </div>
+            <div class="ar-obj-info">
+              <span class="ar-obj-category">Makanan Tradisional</span>
+              <div class="ar-obj-name">Onde-Onde</div>
+              <div class="ar-obj-shape">📐 Bola</div>
+            </div>
+            <a class="btn-lihat-ar" href="https://asblr.com/wItTvy" target="_blank" rel="noopener">
+              🔮 Lihat AR
+            </a>
           </div>
-          <div class="ar-card" onclick="showARDetail('topi')">
-            <div class="ar-card-img"><div class="ar-img-placeholder topi-bg">👒</div><div class="ar-badge">Alat</div></div>
-            <div class="ar-card-info"><span class="ar-category">ALAT TRADISIONAL</span><p class="ar-name">Topi Petani</p></div>
-            <div class="ar-scan-btn">Scan QR →</div>
+
+          <!-- Lammang -->
+          <div class="ar-obj-card">
+            <div class="ar-obj-thumb bg-lammang">
+              🎋
+              <div class="ar-badge-new">Makanan</div>
+            </div>
+            <div class="ar-obj-info">
+              <span class="ar-obj-category">Makanan Tradisional</span>
+              <div class="ar-obj-name">Lammang</div>
+              <div class="ar-obj-shape">📐 Tabung</div>
+            </div>
+            <a class="btn-lihat-ar" href="https://asblr.com/wItTvy" target="_blank" rel="noopener">
+              🔮 Lihat AR
+            </a>
           </div>
-          <div class="ar-card" onclick="showARDetail('rokoroko')">
-            <div class="ar-card-img"><div class="ar-img-placeholder rokoroko-bg">🍃</div><div class="ar-badge">Makanan</div></div>
-            <div class="ar-card-info"><span class="ar-category">MAKANAN TRADISIONAL</span><p class="ar-name">Roko Roko</p></div>
-            <div class="ar-scan-btn">Scan QR →</div>
+
+          <!-- Bakul -->
+          <div class="ar-obj-card">
+            <div class="ar-obj-thumb bg-bakul">
+              🧺
+              <div class="ar-badge-new">Kerajinan</div>
+            </div>
+            <div class="ar-obj-info">
+              <span class="ar-obj-category">Kerajinan Tradisional</span>
+              <div class="ar-obj-name">Bakul</div>
+              <div class="ar-obj-shape">📐 Kubus</div>
+            </div>
+            <a class="btn-lihat-ar" href="https://asblr.com/14RqVB" target="_blank" rel="noopener">
+              🔮 Lihat AR
+            </a>
           </div>
-          <div class="ar-card" onclick="showARDetail('bakul')">
-            <div class="ar-card-img"><div class="ar-img-placeholder bakul-bg">🧺</div><div class="ar-badge">Kerajinan</div></div>
-            <div class="ar-card-info"><span class="ar-category">KERAJINAN TRADISIONAL</span><p class="ar-name">Bakul</p></div>
-            <div class="ar-scan-btn">Scan QR →</div>
+
+          <!-- Roko-Roko -->
+          <div class="ar-obj-card">
+            <div class="ar-obj-thumb bg-roko">
+              🍃
+              <div class="ar-badge-new">Makanan</div>
+            </div>
+            <div class="ar-obj-info">
+              <span class="ar-obj-category">Makanan Tradisional</span>
+              <div class="ar-obj-name">Roko-Roko</div>
+              <div class="ar-obj-shape">📐 Limas</div>
+            </div>
+            <a class="btn-lihat-ar" href="https://asblr.com/0maMQV" target="_blank" rel="noopener">
+              🔮 Lihat AR
+            </a>
           </div>
+
         </div>
       </section>
 
@@ -920,19 +969,19 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
             <div class="panduan-section-title"><span class="ps-num">01</span><span>Navigasi Menu</span></div>
             <div class="steps-list">
               <div class="step-card"><div class="step-num">1</div><div class="step-content"><strong>Materi</strong> — Pelajari teori bangun ruang 3D lengkap dengan rumus dan contoh soal.</div></div>
-              <div class="step-card"><div class="step-num">2</div><div class="step-content"><strong>AR Scan</strong> — Lihat objek budaya dan gunakan kamera untuk scan barcode AR.</div></div>
+              <div class="step-card"><div class="step-num">2</div><div class="step-content"><strong>AR Scan</strong> — Lihat objek budaya dan klik "Lihat AR" untuk membuka konten AR.</div></div>
               <div class="step-card"><div class="step-num">3</div><div class="step-content"><strong>Latihan</strong> — Uji pemahamanmu dengan 10 soal pilihan ganda interaktif.</div></div>
               <div class="step-card"><div class="step-num">4</div><div class="step-content"><strong>Budaya</strong> — Temukan koneksi menarik antara budaya lokal dan matematika.</div></div>
             </div>
           </div>
           <div class="panduan-section">
-            <div class="panduan-section-title"><span class="ps-num">02</span><span>Cara Scan AR</span></div>
+            <div class="panduan-section-title"><span class="ps-num">02</span><span>Cara Melihat AR</span></div>
             <div class="steps-list">
               <div class="step-card accent"><div class="step-num">1</div><div class="step-content">Buka halaman <strong>AR Scan</strong> dari menu navigasi bawah.</div></div>
-              <div class="step-card accent"><div class="step-num">2</div><div class="step-content">Pilih objek budaya yang ingin di-scan (tap card) untuk melihat detailnya.</div></div>
-              <div class="step-card accent"><div class="step-num">3</div><div class="step-content">Tekan tombol <strong>"Scan AR Sekarang"</strong> berwarna emas/merah.</div></div>
-              <div class="step-card accent"><div class="step-num">4</div><div class="step-content">Kamera akan terbuka. Arahkan ke barcode AR pada objek budaya fisik.</div></div>
-              <div class="step-card accent"><div class="step-num">5</div><div class="step-content">Jika terdeteksi, informasi bangun ruang 3D akan muncul secara otomatis!</div></div>
+              <div class="step-card accent"><div class="step-num">2</div><div class="step-content">Pilih objek budaya yang ingin dilihat dari grid kartu objek.</div></div>
+              <div class="step-card accent"><div class="step-num">3</div><div class="step-content">Tekan tombol <strong>"🔮 Lihat AR"</strong> pada kartu objek yang dipilih.</div></div>
+              <div class="step-card accent"><div class="step-num">4</div><div class="step-content">Browser akan membuka link AR secara langsung di perangkat Anda.</div></div>
+              <div class="step-card accent"><div class="step-num">5</div><div class="step-content">Untuk scan via kamera, tekan <strong>"Buka Kamera"</strong> dan izinkan akses kamera.</div></div>
             </div>
           </div>
           <div class="panduan-section">
@@ -979,16 +1028,8 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
     </nav>
   </div>
 
-  <!-- AR DETAIL MODAL -->
-  <div id="ar-modal" class="modal-overlay hidden" onclick="closeModal(event)">
-    <div class="modal-card">
-      <button class="modal-close" onclick="closeARModal()">✕</button>
-      <div id="modal-content"></div>
-      <button class="btn-ar-modal" onclick="openGoogleLens()"><span>📷</span> Buka Google Lens</button>
-    </div>
-  </div>
-
-  <!-- Google Lens dibuka langsung via JS, tidak perlu modal scanner -->
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
 
   <script>
 /* ===== SPLASH ===== */
@@ -1007,79 +1048,116 @@ function navigate(pageName, navEl) {
   if (target) target.classList.add('active');
   if (navEl) navEl.classList.add('active');
   document.querySelector('.page-container').scrollTop = 0;
+  /* Stop camera if leaving AR page */
+  if (pageName !== 'ar') stopCamera();
 }
 
-/* ===== AR DATA ===== */
-const arData = {
-  rumah:    { emoji:'🏠', category:'Rumah Adat',           name:'Rumah Adat Bugis', shapeBadge:'Prisma + Balok',    desc:'Rumah Adat Bugis (Saoraja) adalah rumah panggung tradisional suku Bugis dari Sulawesi Selatan. Atapnya berbentuk prisma segitiga, sedangkan badannya berbentuk balok. Scan AR untuk melihat bangun ruang 3D-nya!' },
-  onde:     { emoji:'🟢', category:'Makanan Tradisional',   name:'Onde Onde',        shapeBadge:'Bola',              desc:'Onde-onde adalah kue tradisional berbentuk bola dari tepung ketan, berisi gula merah, dan dibalut kelapa parut hijau. Bentuknya menyerupai bola sempurna.' },
-  lammang:  { emoji:'🎋', category:'Makanan Tradisional',   name:'Lammang',          shapeBadge:'Tabung (Silinder)', desc:'Lammang adalah makanan khas Sulawesi Selatan yang dimasak di dalam ruas bambu berbentuk tabung/silinder.' },
-  topi:     { emoji:'👒', category:'Alat Tradisional',      name:'Topi Petani',      shapeBadge:'Kerucut',           desc:'Topi Petani (caping) adalah topi anyaman bambu berbentuk kerucut yang digunakan petani sebagai pelindung matahari dan hujan.' },
-  rokoroko: { emoji:'🍃', category:'Makanan Tradisional',   name:'Roko Roko',        shapeBadge:'Limas Segiempat',   desc:'Roko Roko adalah makanan khas Sulawesi Selatan yang dibungkus daun pisang berbentuk limas (piramid segiempat).' },
-  bakul:    { emoji:'🧺', category:'Kerajinan Tradisional', name:'Bakul',            shapeBadge:'Kubus',             desc:'Bakul adalah wadah tradisional berbentuk kotak dari anyaman bambu khas Jawa dan Sulawesi. Bentuknya menyerupai kubus sempurna dengan 6 sisi persegi.' }
-};
-
-function showARDetail(key) {
-  const d = arData[key];
-  if (!d) return;
-  document.getElementById('modal-content').innerHTML = `
-    <div class="modal-emoji">${d.emoji}</div>
-    <span class="modal-cat">${d.category}</span>
-    <h3 class="modal-name">${d.name}</h3>
-    <span class="modal-shape-badge">📐 ${d.shapeBadge}</span>
-    <p class="modal-desc">${d.desc}</p>
-  `;
-  document.getElementById('ar-modal').classList.remove('hidden');
+/* ===== TOAST ===== */
+function showToast(msg, duration = 2600) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), duration);
 }
-function closeARModal() { document.getElementById('ar-modal').classList.add('hidden'); }
-function closeModal(e) { if (e.target === document.getElementById('ar-modal')) closeARModal(); }
 
-/* ===== AR SCANNER — langsung buka Google Lens ===== */
-function openGoogleLens() {
-  closeARModal();
+/* ===== GOOGLE SEARCH (REVISED — replaces Google Lens) ===== */
+function openGoogleSearch() {
+  window.open('https://www.google.com/', '_blank');
+}
 
-  const ua = navigator.userAgent || '';
-  const isAndroid = /android/i.test(ua);
-  const isIOS = /iphone|ipad|ipod/i.test(ua);
+/* ===== CAMERA ===== */
+let cameraStream = null;
+let cameraActive = false;
 
-  if (isAndroid) {
-    /* Android: coba intent Google Lens dulu, fallback ke Google App */
-    const lensIntent = 'intent://lens.google.com/search#Intent;scheme=https;package=com.google.ar.lens;end';
-    const googleApp  = 'intent://scan/#Intent;scheme=zxing;package=com.google.android.googlequicksearchbox;end';
-
-    /* Buat iframe tersembunyi untuk intent — kalau gagal, buka URL biasa */
-    const tried = tryAndroidIntent(lensIntent);
-    if (!tried) window.location.href = googleApp;
-
-  } else if (isIOS) {
-    /* iOS: Google App mendukung Lens via URL scheme googlelens:// */
-    const lensURL   = 'googlelens://';
-    const fallback  = 'https://lens.google.com';
-    const start     = Date.now();
-    window.location.href = lensURL;
-    setTimeout(() => {
-      if (Date.now() - start < 2000) {
-        /* App tidak terpasang — buka di browser (Lens web) */
-        window.open(fallback, '_blank');
-      }
-    }, 1500);
-
+async function toggleCamera() {
+  if (cameraActive) {
+    stopCamera();
   } else {
-    /* Desktop / browser lain: buka Lens web */
-    window.open('https://lens.google.com', '_blank');
+    await startCamera();
   }
 }
 
-function tryAndroidIntent(intentUrl) {
+async function startCamera() {
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    showToast('⚠️ Browser tidak mendukung kamera. Coba Chrome/Safari terbaru.');
+    return;
+  }
   try {
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-    iframe.src = intentUrl;
-    setTimeout(() => document.body.removeChild(iframe), 2000);
-    return true;
-  } catch (e) {
-    return false;
+    const constraints = {
+      video: {
+        facingMode: { ideal: 'environment' }, /* prefer rear camera */
+        width:  { ideal: 1280 },
+        height: { ideal: 720 }
+      }
+    };
+    cameraStream = await navigator.mediaDevices.getUserMedia(constraints);
+    const video = document.getElementById('camera-video');
+    video.srcObject = cameraStream;
+    await video.play();
+
+    cameraActive = true;
+    document.getElementById('camera-preview-wrap').classList.add('active');
+    document.getElementById('btn-cam-toggle').classList.add('active-cam');
+    document.getElementById('cam-toggle-label').textContent = 'Matikan Kamera';
+    document.getElementById('cam-btn-label').textContent = 'Matikan Kamera';
+    document.getElementById('btn-cam-capture').disabled = false;
+    document.getElementById('cam-status').textContent = '🎯 Arahkan kamera ke QR code atau objek AR';
+    showToast('📷 Kamera aktif! Arahkan ke objek AR.');
+  } catch (err) {
+    let msg = '⚠️ Gagal membuka kamera.';
+    if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
+      msg = '🚫 Akses kamera ditolak. Izinkan kamera di pengaturan browser.';
+    } else if (err.name === 'NotFoundError') {
+      msg = '📷 Kamera tidak ditemukan di perangkat ini.';
+    } else if (err.name === 'NotReadableError') {
+      msg = '⚠️ Kamera sedang digunakan aplikasi lain.';
+    }
+    showToast(msg, 3500);
+    console.error('Camera error:', err);
+  }
+}
+
+function stopCamera() {
+  if (cameraStream) {
+    cameraStream.getTracks().forEach(track => track.stop());
+    cameraStream = null;
+  }
+  const video = document.getElementById('camera-video');
+  if (video) video.srcObject = null;
+
+  cameraActive = false;
+  document.getElementById('camera-preview-wrap').classList.remove('active');
+  document.getElementById('btn-cam-toggle').classList.remove('active-cam');
+  document.getElementById('cam-toggle-label').textContent = 'Aktifkan Kamera';
+  document.getElementById('cam-btn-label').textContent = 'Buka Kamera';
+  document.getElementById('btn-cam-capture').disabled = true;
+}
+
+function capturePhoto() {
+  if (!cameraActive) return;
+  const video = document.getElementById('camera-video');
+  const canvas = document.createElement('canvas');
+  canvas.width  = video.videoWidth  || 640;
+  canvas.height = video.videoHeight || 480;
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+  /* Visual flash effect */
+  const flash = document.createElement('div');
+  flash.style.cssText = 'position:fixed;inset:0;background:#fff;opacity:0.85;z-index:9998;pointer-events:none;transition:opacity 0.35s ease;';
+  document.body.appendChild(flash);
+  setTimeout(() => { flash.style.opacity = '0'; setTimeout(() => flash.remove(), 400); }, 80);
+
+  showToast('📸 Foto berhasil diambil!');
+
+  /* Optional: download the captured photo */
+  try {
+    const link = document.createElement('a');
+    link.download = 'geoculture-ar-scan.jpg';
+    link.href = canvas.toDataURL('image/jpeg', 0.9);
+    link.click();
+  } catch(e) {
+    /* Silently fail if download blocked (e.g. in some webviews) */
   }
 }
 
@@ -1090,63 +1168,19 @@ function toggleBudaya(card) {
   if (isOpen) card.classList.remove('open'); else card.classList.add('open');
 }
 
-/* ===== 3D SHAPE GENERATORS (semua pakai CSS preserve-3d) ===== */
-
+/* ===== 3D SHAPE GENERATORS ===== */
 function getKubusHTML() {
-  return `
-  <div class="shape3d-wrap">
-    <div class="scene-kubus">
-      <div class="kubus3d">
-        <div class="k-face k-front">s²</div>
-        <div class="k-face k-back"></div>
-        <div class="k-face k-right">s²</div>
-        <div class="k-face k-left"></div>
-        <div class="k-face k-top">s²</div>
-        <div class="k-face k-bottom"></div>
-      </div>
-    </div>
-  </div>`;
+  return `<div class="shape3d-wrap"><div class="scene-kubus"><div class="kubus3d"><div class="k-face k-front">s²</div><div class="k-face k-back"></div><div class="k-face k-right">s²</div><div class="k-face k-left"></div><div class="k-face k-top">s²</div><div class="k-face k-bottom"></div></div></div></div>`;
 }
-
 function getBalokHTML() {
-  return `
-  <div class="shape3d-wrap">
-    <div class="scene-balok">
-      <div class="balok3d">
-        <div class="b-face b-front">p×l</div>
-        <div class="b-face b-back"></div>
-        <div class="b-face b-right">l×t</div>
-        <div class="b-face b-left"></div>
-        <div class="b-face b-top">p×l</div>
-        <div class="b-face b-bottom"></div>
-      </div>
-    </div>
-  </div>`;
+  return `<div class="shape3d-wrap"><div class="scene-balok"><div class="balok3d"><div class="b-face b-front">p×l</div><div class="b-face b-back"></div><div class="b-face b-right">l×t</div><div class="b-face b-left"></div><div class="b-face b-top">p×l</div><div class="b-face b-bottom"></div></div></div></div>`;
 }
-
-function getTabungHTML() {
-  return `<div class="shape3d-wrap"><canvas id="canvas-tabung" width="120" height="130" style="display:block;"></canvas></div>`;
-}
-
-function getPrismaHTML() {
-  return `<div class="shape3d-wrap"><canvas id="canvas-prisma" width="140" height="130" style="display:block;"></canvas></div>`;
-}
-
-function getLimasHTML() {
-  return `<div class="shape3d-wrap"><canvas id="canvas-limas" width="140" height="130" style="display:block;"></canvas></div>`;
-}
-
-function getKerucutHTML() {
-  return `<div class="shape3d-wrap"><canvas id="canvas-kerucut" width="120" height="130" style="display:block;"></canvas></div>`;
-}
-
+function getTabungHTML()  { return `<div class="shape3d-wrap"><canvas id="canvas-tabung"  width="120" height="130" style="display:block;"></canvas></div>`; }
+function getPrismaHTML()  { return `<div class="shape3d-wrap"><canvas id="canvas-prisma"  width="140" height="130" style="display:block;"></canvas></div>`; }
+function getLimasHTML()   { return `<div class="shape3d-wrap"><canvas id="canvas-limas"   width="140" height="130" style="display:block;"></canvas></div>`; }
+function getKerucutHTML() { return `<div class="shape3d-wrap"><canvas id="canvas-kerucut" width="120" height="130" style="display:block;"></canvas></div>`; }
 function getBolaHTML() {
-  return `
-  <div class="shape3d-wrap">
-    <div class="scene-bola">
-      <div class="bola3d"></div>
-    </div>
-  </div>`;
+  return `<div class="shape3d-wrap"><div class="scene-bola"><div class="bola3d"></div></div></div>`;
 }
 
 /* ===== MATERI DATA ===== */
@@ -1241,13 +1275,9 @@ const materiData = {
   }
 };
 
-/* ===== CANVAS ANIMATORS — dipanggil setelah innerHTML diisi ===== */
+/* ===== CANVAS ANIMATORS ===== */
 var _animID = null;
-
-function stopCanvasAnim() {
-  if (_animID) { cancelAnimationFrame(_animID); _animID = null; }
-}
-
+function stopCanvasAnim() { if (_animID) { cancelAnimationFrame(_animID); _animID = null; } }
 function startCanvasAnim(key) {
   stopCanvasAnim();
   if (key === 'tabung')  animateTabung();
@@ -1259,47 +1289,16 @@ function startCanvasAnim(key) {
 function animateTabung() {
   var t = 0;
   function draw() {
-    var c = document.getElementById('canvas-tabung');
-    if (!c) return;
-    var ctx = c.getContext('2d');
-    t += 0.022;
+    var c = document.getElementById('canvas-tabung'); if (!c) return;
+    var ctx = c.getContext('2d'); t += 0.022;
     var scaleX = 0.75 + 0.25 * Math.abs(Math.cos(t));
-    var cx=60, rx_base=38, ry=13, h=78, top_y=18;
-    var rx = rx_base * scaleX;
-    var bot_y = top_y + h;
+    var cx=60, rx_base=38, ry=13, h=78, top_y=18, rx = rx_base * scaleX, bot_y = top_y + h;
     ctx.clearRect(0,0,120,130);
-    /* Badan silinder */
-    ctx.beginPath();
-    ctx.moveTo(cx - rx, top_y);
-    ctx.lineTo(cx - rx, bot_y);
-    ctx.ellipse(cx, bot_y, rx, ry, 0, Math.PI, 0);
-    ctx.lineTo(cx + rx, top_y);
-    ctx.ellipse(cx, top_y, rx, ry, 0, 0, Math.PI);
-    ctx.closePath();
-    ctx.fillStyle = 'rgba(37,99,235,0.16)';
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(37,99,235,0.75)';
-    ctx.lineWidth = 1.8;
-    ctx.stroke();
-    /* Tutup bawah */
-    ctx.beginPath();
-    ctx.ellipse(cx, bot_y, rx, ry, 0, 0, 2*Math.PI);
-    ctx.fillStyle = 'rgba(37,99,235,0.20)';
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(37,99,235,0.75)';
-    ctx.stroke();
-    /* Tutup atas */
-    ctx.beginPath();
-    ctx.ellipse(cx, top_y, rx, ry, 0, 0, 2*Math.PI);
-    ctx.fillStyle = 'rgba(37,99,235,0.30)';
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(37,99,235,0.85)';
-    ctx.stroke();
-    /* Label */
-    ctx.fillStyle = 'rgba(37,99,235,0.9)';
-    ctx.font = 'bold 11px Poppins,sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('π × r² × t', cx, bot_y + 22);
+    ctx.beginPath(); ctx.moveTo(cx-rx,top_y); ctx.lineTo(cx-rx,bot_y); ctx.ellipse(cx,bot_y,rx,ry,0,Math.PI,0); ctx.lineTo(cx+rx,top_y); ctx.ellipse(cx,top_y,rx,ry,0,0,Math.PI); ctx.closePath();
+    ctx.fillStyle='rgba(37,99,235,0.16)'; ctx.fill(); ctx.strokeStyle='rgba(37,99,235,0.75)'; ctx.lineWidth=1.8; ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(cx,bot_y,rx,ry,0,0,2*Math.PI); ctx.fillStyle='rgba(37,99,235,0.20)'; ctx.fill(); ctx.strokeStyle='rgba(37,99,235,0.75)'; ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(cx,top_y,rx,ry,0,0,2*Math.PI); ctx.fillStyle='rgba(37,99,235,0.30)'; ctx.fill(); ctx.strokeStyle='rgba(37,99,235,0.85)'; ctx.stroke();
+    ctx.fillStyle='rgba(37,99,235,0.9)'; ctx.font='bold 11px Poppins,sans-serif'; ctx.textAlign='center'; ctx.fillText('π × r² × t', cx, bot_y+22);
     _animID = requestAnimationFrame(draw);
   }
   draw();
@@ -1307,33 +1306,22 @@ function animateTabung() {
 
 function animatePrisma() {
   var angle = 0;
-  function proj(cx, cy, x, y, z, cos, sin) {
-    var rx = x*cos - z*sin;
-    var rz = x*sin + z*cos;
-    return { x: cx + rx, y: cy + y - rz * 0.38 };
-  }
+  function proj(cx, cy, x, y, z, cos, sin) { var rx=x*cos-z*sin, rz=x*sin+z*cos; return {x:cx+rx, y:cy+y-rz*0.38}; }
   function draw() {
-    var c = document.getElementById('canvas-prisma');
-    if (!c) return;
-    var ctx = c.getContext('2d');
-    angle += 0.020;
+    var c = document.getElementById('canvas-prisma'); if (!c) return;
+    var ctx = c.getContext('2d'); angle += 0.020;
     var cx=70, cy=65, cos=Math.cos(angle), sin=Math.sin(angle), depth=30;
     ctx.clearRect(0,0,140,130);
     var A1=proj(cx,cy,-40,30,-depth,cos,sin), B1=proj(cx,cy,40,30,-depth,cos,sin), C1=proj(cx,cy,-40,-30,-depth,cos,sin);
-    var A2=proj(cx,cy,-40,30, depth,cos,sin), B2=proj(cx,cy,40,30, depth,cos,sin), C2=proj(cx,cy,-40,-30, depth,cos,sin);
-    /* Sisi bawah */
+    var A2=proj(cx,cy,-40,30,depth,cos,sin), B2=proj(cx,cy,40,30,depth,cos,sin), C2=proj(cx,cy,-40,-30,depth,cos,sin);
     ctx.beginPath(); ctx.moveTo(A1.x,A1.y); ctx.lineTo(B1.x,B1.y); ctx.lineTo(B2.x,B2.y); ctx.lineTo(A2.x,A2.y); ctx.closePath();
     ctx.fillStyle='rgba(123,28,46,0.18)'; ctx.fill(); ctx.strokeStyle='rgba(123,28,46,0.7)'; ctx.lineWidth=1.8; ctx.stroke();
-    /* Sisi kiri vertikal */
     ctx.beginPath(); ctx.moveTo(A1.x,A1.y); ctx.lineTo(C1.x,C1.y); ctx.lineTo(C2.x,C2.y); ctx.lineTo(A2.x,A2.y); ctx.closePath();
     ctx.fillStyle='rgba(123,28,46,0.22)'; ctx.fill(); ctx.strokeStyle='rgba(123,28,46,0.7)'; ctx.stroke();
-    /* Sisi miring */
     ctx.beginPath(); ctx.moveTo(B1.x,B1.y); ctx.lineTo(C1.x,C1.y); ctx.lineTo(C2.x,C2.y); ctx.lineTo(B2.x,B2.y); ctx.closePath();
     ctx.fillStyle='rgba(123,28,46,0.11)'; ctx.fill(); ctx.strokeStyle='rgba(123,28,46,0.55)'; ctx.stroke();
-    /* Muka depan */
     ctx.beginPath(); ctx.moveTo(A1.x,A1.y); ctx.lineTo(B1.x,B1.y); ctx.lineTo(C1.x,C1.y); ctx.closePath();
     ctx.fillStyle='rgba(123,28,46,0.28)'; ctx.fill(); ctx.strokeStyle='rgba(123,28,46,0.9)'; ctx.lineWidth=2; ctx.stroke();
-    /* Muka belakang */
     ctx.beginPath(); ctx.moveTo(A2.x,A2.y); ctx.lineTo(B2.x,B2.y); ctx.lineTo(C2.x,C2.y); ctx.closePath();
     ctx.fillStyle='rgba(123,28,46,0.08)'; ctx.fill(); ctx.strokeStyle='rgba(123,28,46,0.45)'; ctx.lineWidth=1.4; ctx.stroke();
     ctx.fillStyle='rgba(123,28,46,0.9)'; ctx.font='bold 11px Poppins,sans-serif'; ctx.textAlign='center'; ctx.fillText('L.alas × tinggi', cx, 122);
@@ -1344,33 +1332,16 @@ function animatePrisma() {
 
 function animateLimas() {
   var angle = 0;
-  function proj(cx, cy, x, y, z, cos, sin) {
-    var rx = x*cos - z*sin;
-    var rz = x*sin + z*cos;
-    return { x: cx + rx, y: cy + y - rz * 0.40 };
-  }
+  function proj(cx, cy, x, y, z, cos, sin) { var rx=x*cos-z*sin, rz=x*sin+z*cos; return {x:cx+rx, y:cy+y-rz*0.40}; }
   function draw() {
-    var c = document.getElementById('canvas-limas');
-    if (!c) return;
-    var ctx = c.getContext('2d');
-    angle += 0.020;
-    var cx=70, cy=68, cos=Math.cos(angle), sin=Math.sin(angle);
-    var hs=36, apex_y=-46, floor_y=26;
+    var c = document.getElementById('canvas-limas'); if (!c) return;
+    var ctx = c.getContext('2d'); angle += 0.020;
+    var cx=70, cy=68, cos=Math.cos(angle), sin=Math.sin(angle), hs=36, apex_y=-46, floor_y=26;
     ctx.clearRect(0,0,140,130);
-    var A=proj(cx,cy,-hs,floor_y,-hs,cos,sin), B=proj(cx,cy,hs,floor_y,-hs,cos,sin);
-    var C=proj(cx,cy,hs,floor_y,hs,cos,sin),   D=proj(cx,cy,-hs,floor_y,hs,cos,sin);
-    var P=proj(cx,cy,0,apex_y,0,cos,sin);
-    /* Alas */
+    var A=proj(cx,cy,-hs,floor_y,-hs,cos,sin), B=proj(cx,cy,hs,floor_y,-hs,cos,sin), C=proj(cx,cy,hs,floor_y,hs,cos,sin), D=proj(cx,cy,-hs,floor_y,hs,cos,sin), P=proj(cx,cy,0,apex_y,0,cos,sin);
     ctx.beginPath(); ctx.moveTo(A.x,A.y); ctx.lineTo(B.x,B.y); ctx.lineTo(C.x,C.y); ctx.lineTo(D.x,D.y); ctx.closePath();
     ctx.fillStyle='rgba(22,163,74,0.18)'; ctx.fill(); ctx.strokeStyle='rgba(22,163,74,0.7)'; ctx.lineWidth=1.8; ctx.stroke();
-    /* 4 sisi */
-    var faces=[
-      {pts:[A,B,P],fill:'rgba(22,163,74,0.24)'},
-      {pts:[B,C,P],fill:'rgba(22,163,74,0.15)'},
-      {pts:[C,D,P],fill:'rgba(22,163,74,0.10)'},
-      {pts:[D,A,P],fill:'rgba(22,163,74,0.20)'}
-    ];
-    faces.forEach(function(f){
+    [{pts:[A,B,P],fill:'rgba(22,163,74,0.24)'},{pts:[B,C,P],fill:'rgba(22,163,74,0.15)'},{pts:[C,D,P],fill:'rgba(22,163,74,0.10)'},{pts:[D,A,P],fill:'rgba(22,163,74,0.20)'}].forEach(function(f){
       ctx.beginPath(); ctx.moveTo(f.pts[0].x,f.pts[0].y); ctx.lineTo(f.pts[1].x,f.pts[1].y); ctx.lineTo(f.pts[2].x,f.pts[2].y); ctx.closePath();
       ctx.fillStyle=f.fill; ctx.fill(); ctx.strokeStyle='rgba(22,163,74,0.72)'; ctx.lineWidth=1.8; ctx.stroke();
     });
@@ -1384,36 +1355,16 @@ function animateLimas() {
 function animateKerucut() {
   var angle = 0;
   function draw() {
-    var c = document.getElementById('canvas-kerucut');
-    if (!c) return;
-    var ctx = c.getContext('2d');
-    angle += 0.022;
-    var cx=60, rx_base=40, ry=11, apex_y=14, base_y=98;
-    var rx = rx_base * Math.abs(Math.cos(angle));
+    var c = document.getElementById('canvas-kerucut'); if (!c) return;
+    var ctx = c.getContext('2d'); angle += 0.022;
+    var cx=60, rx_base=40, ry=11, apex_y=14, base_y=98, rx=rx_base*Math.abs(Math.cos(angle));
     ctx.clearRect(0,0,120,130);
-    /* Selimut kiri */
-    ctx.beginPath();
-    ctx.moveTo(cx, apex_y);
-    ctx.lineTo(cx - rx, base_y);
-    ctx.ellipse(cx, base_y, rx, ry, 0, Math.PI, 2*Math.PI);
-    ctx.closePath();
-    ctx.fillStyle='rgba(234,88,12,0.22)'; ctx.fill();
-    ctx.strokeStyle='rgba(234,88,12,0.75)'; ctx.lineWidth=1.8; ctx.stroke();
-    /* Selimut kanan */
-    ctx.beginPath();
-    ctx.moveTo(cx, apex_y);
-    ctx.lineTo(cx + rx, base_y);
-    ctx.ellipse(cx, base_y, rx, ry, 0, 0, Math.PI);
-    ctx.closePath();
-    ctx.fillStyle='rgba(234,88,12,0.13)'; ctx.fill();
-    ctx.strokeStyle='rgba(234,88,12,0.6)'; ctx.lineWidth=1.5; ctx.stroke();
-    /* Alas */
-    ctx.beginPath(); ctx.ellipse(cx, base_y, rx, ry, 0, 0, 2*Math.PI);
-    ctx.fillStyle='rgba(234,88,12,0.20)'; ctx.fill();
-    ctx.strokeStyle='rgba(234,88,12,0.75)'; ctx.lineWidth=1.8; ctx.stroke();
-    /* Puncak */
-    ctx.beginPath(); ctx.arc(cx, apex_y, 4, 0, 2*Math.PI);
-    ctx.fillStyle='rgba(234,88,12,0.9)'; ctx.fill();
+    ctx.beginPath(); ctx.moveTo(cx,apex_y); ctx.lineTo(cx-rx,base_y); ctx.ellipse(cx,base_y,rx,ry,0,Math.PI,2*Math.PI); ctx.closePath();
+    ctx.fillStyle='rgba(234,88,12,0.22)'; ctx.fill(); ctx.strokeStyle='rgba(234,88,12,0.75)'; ctx.lineWidth=1.8; ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx,apex_y); ctx.lineTo(cx+rx,base_y); ctx.ellipse(cx,base_y,rx,ry,0,0,Math.PI); ctx.closePath();
+    ctx.fillStyle='rgba(234,88,12,0.13)'; ctx.fill(); ctx.strokeStyle='rgba(234,88,12,0.6)'; ctx.lineWidth=1.5; ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(cx,base_y,rx,ry,0,0,2*Math.PI); ctx.fillStyle='rgba(234,88,12,0.20)'; ctx.fill(); ctx.strokeStyle='rgba(234,88,12,0.75)'; ctx.lineWidth=1.8; ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx,apex_y,4,0,2*Math.PI); ctx.fillStyle='rgba(234,88,12,0.9)'; ctx.fill();
     ctx.fillStyle='rgba(234,88,12,0.9)'; ctx.font='bold 11px Poppins,sans-serif'; ctx.textAlign='center'; ctx.fillText('⅓ × πr² × t', cx, 120);
     _animID = requestAnimationFrame(draw);
   }
@@ -1422,24 +1373,14 @@ function animateKerucut() {
 
 function bukaMateri(key) {
   stopCanvasAnim();
-  const d = materiData[key];
-  if (!d) return;
-  const rumusHTML = d.rumus.map(r => `
-    <div class="rumus-item">
-      <span class="rumus-label">${r.label}</span>
-      <span class="rumus-formula">${r.formula}</span>
-    </div>
-  `).join('');
+  const d = materiData[key]; if (!d) return;
+  const rumusHTML = d.rumus.map(r => `<div class="rumus-item"><span class="rumus-label">${r.label}</span><span class="rumus-formula">${r.formula}</span></div>`).join('');
   const pembahasanHTML = d.pembahasan.map(p => `<p>${p}</p>`).join('');
-
   document.getElementById('materi-detail-content').innerHTML = `
     <div class="detail-card">
       <div class="card-header ${d.headerClass}">
         <div class="shape-icon">${d.icon}</div>
-        <div>
-          <div class="shape-tag">Bangun Ruang</div>
-          <h3 class="shape-name">${d.name}</h3>
-        </div>
+        <div><div class="shape-tag">Bangun Ruang</div><h3 class="shape-name">${d.name}</h3></div>
       </div>
       <div class="card-body">
         ${d.shape3d}
@@ -1448,10 +1389,7 @@ function bukaMateri(key) {
         <div class="contoh-soal">
           <div class="soal-header">💡 Contoh Soal</div>
           <p>${d.soal}</p>
-          <div class="pembahasan">
-            <div class="pb-header">✅ Pembahasan</div>
-            ${pembahasanHTML}
-          </div>
+          <div class="pembahasan"><div class="pb-header">✅ Pembahasan</div>${pembahasanHTML}</div>
         </div>
         <div class="budaya-hint">${d.hint}</div>
       </div>
@@ -1460,7 +1398,6 @@ function bukaMateri(key) {
   document.getElementById('materi-folder-list').classList.add('hidden');
   document.getElementById('materi-detail').classList.remove('hidden');
   document.querySelector('.page-container').scrollTop = 0;
-  /* Mulai animasi canvas SETELAH DOM diisi */
   startCanvasAnim(key);
 }
 
@@ -1496,8 +1433,7 @@ function startQuiz() {
 }
 function renderQuestion() {
   answered=false;
-  const q=quizQuestions[currentQuestion];
-  const total=quizQuestions.length;
+  const q=quizQuestions[currentQuestion], total=quizQuestions.length;
   document.getElementById('progress-fill').style.width=(currentQuestion/total*100)+'%';
   document.getElementById('q-current').textContent=currentQuestion+1;
   document.getElementById('q-total').textContent=total;
@@ -1519,8 +1455,7 @@ function renderQuestion() {
 function selectAnswer(selectedIdx,btnEl) {
   if(answered) return;
   answered=true;
-  const q=quizQuestions[currentQuestion];
-  const isCorrect=selectedIdx===q.correct;
+  const q=quizQuestions[currentQuestion], isCorrect=selectedIdx===q.correct;
   document.querySelectorAll('.option-btn').forEach(b=>b.classList.add('disabled'));
   document.querySelectorAll('.option-btn')[q.correct].classList.add('correct');
   if(isCorrect){score++;btnEl.classList.add('correct');}else{btnEl.classList.add('wrong');}
@@ -1561,8 +1496,11 @@ function showResult() {
 }
 function retryQuiz(){document.getElementById('quiz-result').classList.add('hidden');startQuiz();}
 
-document.addEventListener('keydown',(e)=>{
-  if(e.key==='Escape'){closeARModal();}
+document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') stopCamera(); });
+
+/* Stop camera when page is hidden (user switches tab) */
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) stopCamera();
 });
   </script>
 </body>
