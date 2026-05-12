@@ -523,6 +523,11 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
 .math-shape-row { display:flex; flex-wrap:wrap; gap:6px; }
 .math-shape-badge { background:var(--maroon-pale); color:var(--maroon); font-size:12px; font-weight:600; padding:5px 12px; border-radius:var(--radius-full); border:1px solid rgba(123,28,46,0.15); }
 
+/* Filosofi box */
+.filosofi-box { background: linear-gradient(135deg, rgba(212,168,67,0.10), rgba(212,168,67,0.05)); border: 1px solid rgba(212,168,67,0.35); border-radius: var(--radius-md); padding: 10px 12px; margin-top: 10px; }
+.filosofi-label { font-size: 10px; font-weight: 700; color: #7a5a00; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+.filosofi-box p { font-size: 12.5px; color: #5c4500; line-height: 1.65; font-style: italic; }
+
 /* PANDUAN */
 .panduan-hero { background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 60%,#7B1C2E 100%); }
 .panduan-list { padding:16px 14px; display:flex; flex-direction:column; gap:20px; }
@@ -876,6 +881,8 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
           <p class="hero-desc">Temukan hubungan antara budaya lokal dan bangun ruang 3D</p>
         </div>
         <div class="budaya-list">
+
+          <!-- 1. Rumah Adat Bugis -->
           <div class="budaya-card" onclick="toggleBudaya(this)">
             <div class="budaya-header">
               <div class="budaya-emoji">🏠</div>
@@ -884,11 +891,26 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
               <span class="budaya-arrow">›</span>
             </div>
             <div class="budaya-detail">
-              <div class="budaya-section"><div class="bd-label">📖 Tentang Budaya</div><p>Rumah Adat Bugis (Saoraja) adalah rumah panggung tradisional suku Bugis dari Sulawesi Selatan. Dibangun di atas tiang-tiang kayu dengan bentuk persegi panjang dan atap yang berbentuk prisma segitiga.</p></div>
-              <div class="budaya-section"><div class="bd-label">📐 Bentuk Matematisnya</div><div class="math-shape-row"><div class="math-shape-badge">Balok (badan rumah)</div><div class="math-shape-badge">Prisma Segitiga (atap)</div></div></div>
-              <div class="budaya-section"><div class="bd-label">🔗 Hubungan Matematika</div><p>Badan rumah berbentuk <strong>balok</strong> (6 sisi persegi panjang), sedangkan atapnya berbentuk <strong>prisma segitiga</strong>. Total volume = Volume Balok + Volume Prisma.</p></div>
+              <div class="budaya-section">
+                <div class="bd-label">📖 Tentang Budaya</div>
+                <p>Rumah Adat Bugis (Saoraja) adalah rumah panggung tradisional suku Bugis dari Sulawesi Selatan. Dibangun di atas tiang-tiang kayu dengan bentuk persegi panjang dan atap yang berbentuk prisma segitiga.</p>
+              </div>
+              <div class="filosofi-box">
+                <div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div>
+                <p>Rumah Adat Bugis bukan sekadar tempat tinggal, melainkan simbol martabat keluarga dan identitas budaya masyarakat Bugis yang menjunjung tinggi nilai kehormatan dan kekeluargaan. Bentuk rumah panggung merupakan penyesuaian terhadap lingkungan, sementara pembagian ruang di dalamnya melambangkan keteraturan hidup, penghormatan kepada tamu, serta hubungan harmonis antara manusia, alam, dan Sang Pencipta.</p>
+              </div>
+              <div class="budaya-section">
+                <div class="bd-label">📐 Bentuk Matematisnya</div>
+                <div class="math-shape-row"><div class="math-shape-badge">Balok (badan rumah)</div><div class="math-shape-badge">Prisma Segitiga (atap)</div></div>
+              </div>
+              <div class="budaya-section">
+                <div class="bd-label">🔗 Hubungan Matematika</div>
+                <p>Badan rumah berbentuk <strong>balok</strong> (6 sisi persegi panjang), sedangkan atapnya berbentuk <strong>prisma segitiga</strong>. Total volume = Volume Balok + Volume Prisma.</p>
+              </div>
             </div>
           </div>
+
+          <!-- 2. Onde-Onde -->
           <div class="budaya-card" onclick="toggleBudaya(this)">
             <div class="budaya-header">
               <div class="budaya-emoji">🟢</div>
@@ -897,11 +919,26 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
               <span class="budaya-arrow">›</span>
             </div>
             <div class="budaya-detail">
-              <div class="budaya-section"><div class="bd-label">📖 Tentang Budaya</div><p>Onde-onde adalah kue tradisional berbentuk bola yang terbuat dari tepung ketan, diisi gula merah, dan dibalut kelapa parut berwarna hijau dari daun pandan.</p></div>
-              <div class="budaya-section"><div class="bd-label">📐 Bentuk Matematisnya</div><div class="math-shape-row"><div class="math-shape-badge">Bola (bangun bulat sempurna)</div></div></div>
-              <div class="budaya-section"><div class="bd-label">🔗 Hubungan Matematika</div><p>Onde-onde memiliki bentuk menyerupai <strong>bola</strong>. Volume adonan = <strong>4/3 × π × r³</strong>. Jika diameternya 3cm (r=1,5cm), maka V ≈ 14,13 cm³.</p></div>
+              <div class="budaya-section">
+                <div class="bd-label">📖 Tentang Budaya</div>
+                <p>Onde-onde adalah kue tradisional berbentuk bola yang terbuat dari tepung ketan, diisi gula merah, dan dibalut kelapa parut berwarna hijau dari daun pandan. Kehadirannya sering ditemukan dalam acara keluarga, kegiatan adat, maupun tradisi masyarakat sebagai sajian kebersamaan.</p>
+              </div>
+              <div class="filosofi-box">
+                <div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div>
+                <p>Bentuk onde-onde yang bulat melambangkan persatuan, keharmonisan, dan keutuhan dalam kehidupan sosial. Selain menjadi makanan tradisional, onde-onde mencerminkan nilai kesederhanaan dan kreativitas masyarakat dalam mengolah bahan pangan lokal menjadi kuliner yang bernilai budaya.</p>
+              </div>
+              <div class="budaya-section">
+                <div class="bd-label">📐 Bentuk Matematisnya</div>
+                <div class="math-shape-row"><div class="math-shape-badge">Bola (bangun bulat sempurna)</div></div>
+              </div>
+              <div class="budaya-section">
+                <div class="bd-label">🔗 Hubungan Matematika</div>
+                <p>Onde-onde memiliki bentuk menyerupai <strong>bola</strong>. Volume adonan = <strong>4/3 × π × r³</strong>. Jika diameternya 3cm (r=1,5cm), maka V ≈ 14,13 cm³.</p>
+              </div>
             </div>
           </div>
+
+          <!-- 3. Lammang -->
           <div class="budaya-card" onclick="toggleBudaya(this)">
             <div class="budaya-header">
               <div class="budaya-emoji">🎋</div>
@@ -910,11 +947,26 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
               <span class="budaya-arrow">›</span>
             </div>
             <div class="budaya-detail">
-              <div class="budaya-section"><div class="bd-label">📖 Tentang Budaya</div><p>Lammang adalah makanan khas Sulawesi Selatan yang terbuat dari beras ketan yang dimasak di dalam bambu. Proses memasaknya menggunakan ruas bambu sebagai wadah, menghasilkan bentuk silinder yang khas.</p></div>
-              <div class="budaya-section"><div class="bd-label">📐 Bentuk Matematisnya</div><div class="math-shape-row"><div class="math-shape-badge">Tabung (silinder)</div></div></div>
-              <div class="budaya-section"><div class="bd-label">🔗 Hubungan Matematika</div><p>Bambu yang digunakan adalah <strong>tabung/silinder</strong>. Volume beras ketan = <strong>π × r² × t</strong>. Bambu dengan r=3cm dan t=20cm mampu menampung sekitar 565 cm³ beras ketan.</p></div>
+              <div class="budaya-section">
+                <div class="bd-label">📖 Tentang Budaya</div>
+                <p>Lammang adalah makanan khas Sulawesi Selatan yang terbuat dari beras ketan yang dimasak di dalam bambu. Proses memasaknya menggunakan ruas bambu sebagai wadah, menghasilkan bentuk silinder yang khas.</p>
+              </div>
+              <div class="filosofi-box">
+                <div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div>
+                <p>Lammang identik dengan kegiatan adat, perayaan keagamaan, dan tradisi kebersamaan masyarakat Sulawesi Selatan. Proses memasaknya yang menggunakan bambu dan api tradisional mencerminkan kedekatan masyarakat dengan alam serta pemanfaatan sumber daya lokal secara bijaksana. Lammang melambangkan kebersamaan, gotong royong, dan rasa syukur karena biasanya disiapkan dan dinikmati bersama dalam acara keluarga maupun kegiatan adat.</p>
+              </div>
+              <div class="budaya-section">
+                <div class="bd-label">📐 Bentuk Matematisnya</div>
+                <div class="math-shape-row"><div class="math-shape-badge">Tabung (silinder)</div></div>
+              </div>
+              <div class="budaya-section">
+                <div class="bd-label">🔗 Hubungan Matematika</div>
+                <p>Bambu yang digunakan adalah <strong>tabung/silinder</strong>. Volume beras ketan = <strong>π × r² × t</strong>. Bambu dengan r=3cm dan t=20cm mampu menampung sekitar 565 cm³ beras ketan.</p>
+              </div>
             </div>
           </div>
+
+          <!-- 4. Topi Petani -->
           <div class="budaya-card" onclick="toggleBudaya(this)">
             <div class="budaya-header">
               <div class="budaya-emoji">👒</div>
@@ -923,11 +975,26 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
               <span class="budaya-arrow">›</span>
             </div>
             <div class="budaya-detail">
-              <div class="budaya-section"><div class="bd-label">📖 Tentang Budaya</div><p>Topi Petani (caping) adalah topi tradisional yang terbuat dari anyaman bambu atau daun. Digunakan oleh para petani sebagai pelindung dari terik matahari dan hujan saat bekerja di sawah.</p></div>
-              <div class="budaya-section"><div class="bd-label">📐 Bentuk Matematisnya</div><div class="math-shape-row"><div class="math-shape-badge">Kerucut (cone)</div></div></div>
-              <div class="budaya-section"><div class="bd-label">🔗 Hubungan Matematika</div><p>Topi petani menyerupai <strong>kerucut</strong>. Luas bahan = <strong>π × r × s</strong>. Dengan r=20cm dan s=25cm, butuh ≈ 1.570,8 cm² anyaman bambu.</p></div>
+              <div class="budaya-section">
+                <div class="bd-label">📖 Tentang Budaya</div>
+                <p>Topi Petani (caping) adalah topi tradisional yang terbuat dari anyaman bambu atau daun. Digunakan oleh para petani sebagai pelindung dari terik matahari dan hujan saat bekerja di sawah.</p>
+              </div>
+              <div class="filosofi-box">
+                <div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div>
+                <p>Topi petani merupakan bagian dari budaya agraris masyarakat Indonesia yang melambangkan kehidupan yang sederhana, pekerja keras, dan dekat dengan alam. Filosofi yang terkandung mencerminkan ketekunan, kesabaran, dan semangat bekerja untuk memenuhi kebutuhan hidup. Topi petani juga menjadi simbol identitas masyarakat pedesaan dan nilai-nilai kerja keras dalam budaya lokal.</p>
+              </div>
+              <div class="budaya-section">
+                <div class="bd-label">📐 Bentuk Matematisnya</div>
+                <div class="math-shape-row"><div class="math-shape-badge">Kerucut (cone)</div></div>
+              </div>
+              <div class="budaya-section">
+                <div class="bd-label">🔗 Hubungan Matematika</div>
+                <p>Topi petani menyerupai <strong>kerucut</strong>. Luas bahan = <strong>π × r × s</strong>. Dengan r=20cm dan s=25cm, butuh ≈ 1.570,8 cm² anyaman bambu.</p>
+              </div>
             </div>
           </div>
+
+          <!-- 5. Roko Roko -->
           <div class="budaya-card" onclick="toggleBudaya(this)">
             <div class="budaya-header">
               <div class="budaya-emoji">🍃</div>
@@ -936,11 +1003,26 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
               <span class="budaya-arrow">›</span>
             </div>
             <div class="budaya-detail">
-              <div class="budaya-section"><div class="bd-label">📖 Tentang Budaya</div><p>Roko Roko adalah makanan tradisional khas Sulawesi Selatan yang dibungkus daun pisang berbentuk limas (piramid). Biasanya berisi campuran tepung ketan dan santan kelapa dengan isian gula merah.</p></div>
-              <div class="budaya-section"><div class="bd-label">📐 Bentuk Matematisnya</div><div class="math-shape-row"><div class="math-shape-badge">Limas Segiempat</div></div></div>
-              <div class="budaya-section"><div class="bd-label">🔗 Hubungan Matematika</div><p>Bungkus Roko Roko menyerupai <strong>limas segiempat</strong>. Volume isi = <strong>⅓ × s² × t</strong>. Dengan sisi alas 5cm dan tinggi 8cm, V = ⅓ × 25 × 8 = 66,67 cm³.</p></div>
+              <div class="budaya-section">
+                <div class="bd-label">📖 Tentang Budaya</div>
+                <p>Roko-roko adalah makanan tradisional khas Sulawesi Selatan yang dibungkus daun pisang berbentuk limas (piramid). Biasanya berisi campuran tepung ketan dan santan kelapa dengan isian gula merah.</p>
+              </div>
+              <div class="filosofi-box">
+                <div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div>
+                <p>Roko-roko biasa disajikan dalam acara keluarga, kegiatan adat, dan tradisi masyarakat Sulawesi Selatan. Penggunaan daun pisang sebagai pembungkus mencerminkan kearifan lokal dalam memanfaatkan bahan alami yang ramah lingkungan. Filosofi roko-roko menggambarkan nilai kebersamaan, kesederhanaan, dan rasa syukur masyarakat terhadap hasil alam, sekaligus menunjukkan pentingnya menjaga tradisi kuliner sebagai bagian dari identitas budaya daerah.</p>
+              </div>
+              <div class="budaya-section">
+                <div class="bd-label">📐 Bentuk Matematisnya</div>
+                <div class="math-shape-row"><div class="math-shape-badge">Limas Segiempat</div></div>
+              </div>
+              <div class="budaya-section">
+                <div class="bd-label">🔗 Hubungan Matematika</div>
+                <p>Bungkus Roko Roko menyerupai <strong>limas segiempat</strong>. Volume isi = <strong>⅓ × s² × t</strong>. Dengan sisi alas 5cm dan tinggi 8cm, V = ⅓ × 25 × 8 = 66,67 cm³.</p>
+              </div>
             </div>
           </div>
+
+          <!-- 6. Bakul -->
           <div class="budaya-card" onclick="toggleBudaya(this)">
             <div class="budaya-header">
               <div class="budaya-emoji">🧺</div>
@@ -949,11 +1031,25 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
               <span class="budaya-arrow">›</span>
             </div>
             <div class="budaya-detail">
-              <div class="budaya-section"><div class="bd-label">📖 Tentang Budaya</div><p>Bakul adalah wadah tradisional berbentuk kotak yang dibuat dari anyaman bambu. Kerajinan tangan khas Jawa dan Sulawesi ini digunakan sebagai tempat makanan, sesaji, atau oleh-oleh dalam berbagai upacara adat dan hajatan.</p></div>
-              <div class="budaya-section"><div class="bd-label">📐 Bentuk Matematisnya</div><div class="math-shape-row"><div class="math-shape-badge">Kubus (6 sisi persegi)</div></div></div>
-              <div class="budaya-section"><div class="bd-label">🔗 Hubungan Matematika</div><p>Bakul memiliki bentuk <strong>kubus</strong>. Volume isi bakul = <strong>s³</strong>. Misalnya bakul dengan sisi 12cm dapat menampung V = 12³ = <strong>1.728 cm³</strong> makanan. Luas permukaan = <strong>6 × s²</strong> = 6 × 144 = <strong>864 cm²</strong>.</p></div>
+              <div class="budaya-section">
+                <div class="bd-label">📖 Tentang Budaya</div>
+                <p>Bakul adalah wadah tradisional berbentuk kotak yang dibuat dari anyaman bambu. Kerajinan tangan khas Jawa dan Sulawesi ini digunakan sebagai tempat makanan, sesaji, atau oleh-oleh dalam berbagai upacara adat dan hajatan.</p>
+              </div>
+              <div class="filosofi-box">
+                <div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div>
+                <p>Bakul melambangkan kesederhanaan, kemandirian, dan kemampuan memanfaatkan alam secara bijaksana. Proses pembuatannya yang dilakukan secara manual menunjukkan nilai ketelitian, kesabaran, dan keterampilan yang diwariskan antar generasi. Bakul juga mencerminkan budaya gotong royong dan kehidupan masyarakat yang erat dengan aktivitas pertanian dan perdagangan tradisional.</p>
+              </div>
+              <div class="budaya-section">
+                <div class="bd-label">📐 Bentuk Matematisnya</div>
+                <div class="math-shape-row"><div class="math-shape-badge">Kubus (6 sisi persegi)</div></div>
+              </div>
+              <div class="budaya-section">
+                <div class="bd-label">🔗 Hubungan Matematika</div>
+                <p>Bakul memiliki bentuk <strong>kubus</strong>. Volume isi bakul = <strong>s³</strong>. Misalnya bakul dengan sisi 12cm dapat menampung V = 12³ = <strong>1.728 cm³</strong> makanan. Luas permukaan = <strong>6 × s²</strong> = 6 × 144 = <strong>864 cm²</strong>.</p>
+              </div>
             </div>
           </div>
+
         </div>
       </section>
 
