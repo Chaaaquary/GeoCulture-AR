@@ -188,9 +188,6 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
 .section-title { font-size:18px; font-weight:800; color:var(--gray-800); padding:18px 16px 4px; letter-spacing:-0.3px; }
 .section-subtitle { font-size:12px; color:var(--gray-400); padding:0 16px 12px; }
 
-/* ==========================================
-   AR OBJECT CARDS (NEW - Revised Design)
-   ========================================== */
 .ar-objects-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -267,7 +264,6 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
   font-weight: 500;
 }
 
-/* AR VIEW button inside card */
 .btn-lihat-ar {
   display: flex;
   align-items: center;
@@ -289,9 +285,6 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
 }
 .btn-lihat-ar:active { opacity: 0.85; transform: scale(0.97); }
 
-/* ==========================================
-   CAMERA SECTION
-   ========================================== */
 .camera-section {
   margin: 0 14px 20px;
   background: var(--white);
@@ -327,7 +320,7 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
   width: 100%;
   background: #111;
   overflow: hidden;
-  display: none; /* shown when active */
+  display: none;
 }
 .camera-preview-wrap.active { display: block; }
 
@@ -338,7 +331,6 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
   object-fit: cover;
 }
 
-/* Scan overlay frame */
 .camera-scan-overlay {
   position: absolute;
   inset: 0;
@@ -434,7 +426,6 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
 .btn-cam-capture:active { transform: scale(0.96); }
 .btn-cam-capture:disabled { opacity: 0.4; cursor: not-allowed; }
 
-/* SCANNER (old ar-grid kept for modal info) */
 .ar-card { background:var(--white); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid var(--gray-200); cursor:pointer; transition:transform var(--trans-fast),box-shadow var(--trans-fast); position:relative; }
 .ar-card:active { transform:scale(0.97); box-shadow:var(--shadow-md); }
 .ar-card-img { position:relative; height:100px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
@@ -522,8 +513,6 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
 .budaya-section p { font-size:13px; color:var(--gray-600); line-height:1.65; }
 .math-shape-row { display:flex; flex-wrap:wrap; gap:6px; }
 .math-shape-badge { background:var(--maroon-pale); color:var(--maroon); font-size:12px; font-weight:600; padding:5px 12px; border-radius:var(--radius-full); border:1px solid rgba(123,28,46,0.15); }
-
-/* Filosofi box */
 .filosofi-box { background: linear-gradient(135deg, rgba(212,168,67,0.10), rgba(212,168,67,0.05)); border: 1px solid rgba(212,168,67,0.35); border-radius: var(--radius-md); padding: 10px 12px; margin-top: 10px; }
 .filosofi-label { font-size: 10px; font-weight: 700; color: #7a5a00; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
 .filosofi-box p { font-size: 12.5px; color: #5c4500; line-height: 1.65; font-style: italic; }
@@ -544,6 +533,16 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
 .dev-label { font-size:10px; color:rgba(255,255,255,0.6); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px; }
 .dev-name { font-size:18px; font-weight:900; color:var(--gold-light); letter-spacing:-0.3px; }
 .dev-desc { font-size:11px; color:rgba(255,255,255,0.55); margin-top:4px; }
+
+/* Cara AR sub-label */
+.ar-cara-label {
+  font-size:13px; font-weight:700; color:var(--maroon);
+  margin-bottom:8px; display:flex; align-items:center; gap:6px;
+}
+.ar-cara-badge {
+  background:var(--maroon-pale); border-radius:var(--radius-full);
+  padding:2px 10px; font-size:11px; font-weight:700; color:var(--maroon);
+}
 
 /* BOTTOM NAV */
 .bottom-nav { position:fixed; bottom:0; left:50%; transform:translateX(-50%); width:100%; max-width:430px; background:var(--white); border-top:1px solid var(--gray-200); display:flex; align-items:flex-end; justify-content:space-around; padding:6px 4px 10px; z-index:200; box-shadow:0 -4px 20px rgba(0,0,0,0.08); }
@@ -684,7 +683,7 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
         </div>
       </section>
 
-      <!-- PAGE: AR SCAN (REVISED) -->
+      <!-- PAGE: AR SCAN -->
       <section id="page-ar" class="page">
         <div class="page-hero ar-hero">
           <div class="hero-badge">📷 Teknologi AR</div>
@@ -735,103 +734,60 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
         <p class="section-subtitle">Tap <strong>Lihat AR</strong> untuk langsung membuka konten augmented reality!</p>
 
         <div class="ar-objects-grid">
-
-          <!-- Rumah Adat Bugis -->
           <div class="ar-obj-card">
-            <div class="ar-obj-thumb bg-rumah">
-              🏠
-              <div class="ar-badge-new">Rumah Adat</div>
-            </div>
+            <div class="ar-obj-thumb bg-rumah">🏠<div class="ar-badge-new">Rumah Adat</div></div>
             <div class="ar-obj-info">
               <span class="ar-obj-category">Arsitektur</span>
               <div class="ar-obj-name">Rumah Adat Bugis</div>
               <div class="ar-obj-shape">📐 Prisma + Balok</div>
             </div>
-            <a class="btn-lihat-ar" href="https://asblr.com/tXFXoW" target="_blank" rel="noopener">
-              🔮 Lihat AR
-            </a>
+            <a class="btn-lihat-ar" href="https://asblr.com/tXFXoW" target="_blank" rel="noopener">🔮 Lihat AR</a>
           </div>
-
-          <!-- Topi Petani -->
           <div class="ar-obj-card">
-            <div class="ar-obj-thumb bg-topi">
-              👒
-              <div class="ar-badge-new">Alat</div>
-            </div>
+            <div class="ar-obj-thumb bg-topi">👒<div class="ar-badge-new">Alat</div></div>
             <div class="ar-obj-info">
               <span class="ar-obj-category">Alat Tradisional</span>
               <div class="ar-obj-name">Topi Petani</div>
               <div class="ar-obj-shape">📐 Kerucut</div>
             </div>
-            <a class="btn-lihat-ar" href="https://asblr.com/QNzyS4" target="_blank" rel="noopener">
-              🔮 Lihat AR
-            </a>
+            <a class="btn-lihat-ar" href="https://asblr.com/QNzyS4" target="_blank" rel="noopener">🔮 Lihat AR</a>
           </div>
-
-          <!-- Onde-Onde -->
           <div class="ar-obj-card">
-            <div class="ar-obj-thumb bg-onde">
-              🟢
-              <div class="ar-badge-new">Makanan</div>
-            </div>
+            <div class="ar-obj-thumb bg-onde">🟢<div class="ar-badge-new">Makanan</div></div>
             <div class="ar-obj-info">
               <span class="ar-obj-category">Makanan Tradisional</span>
               <div class="ar-obj-name">Onde-Onde</div>
               <div class="ar-obj-shape">📐 Bola</div>
             </div>
-            <a class="btn-lihat-ar" href="https://asblr.com/wItTvy" target="_blank" rel="noopener">
-              🔮 Lihat AR
-            </a>
+            <a class="btn-lihat-ar" href="https://asblr.com/wItTvy" target="_blank" rel="noopener">🔮 Lihat AR</a>
           </div>
-
-          <!-- Lammang -->
           <div class="ar-obj-card">
-            <div class="ar-obj-thumb bg-lammang">
-              🎋
-              <div class="ar-badge-new">Makanan</div>
-            </div>
+            <div class="ar-obj-thumb bg-lammang">🎋<div class="ar-badge-new">Makanan</div></div>
             <div class="ar-obj-info">
               <span class="ar-obj-category">Makanan Tradisional</span>
               <div class="ar-obj-name">Lammang</div>
               <div class="ar-obj-shape">📐 Tabung</div>
             </div>
-            <a class="btn-lihat-ar" href="https://asblr.com/YvIORZ" target="_blank" rel="noopener">
-              🔮 Lihat AR
-            </a>
+            <a class="btn-lihat-ar" href="https://asblr.com/YvIORZ" target="_blank" rel="noopener">🔮 Lihat AR</a>
           </div>
-
-          <!-- Bakul -->
           <div class="ar-obj-card">
-            <div class="ar-obj-thumb bg-bakul">
-              🧺
-              <div class="ar-badge-new">Kerajinan</div>
-            </div>
+            <div class="ar-obj-thumb bg-bakul">🧺<div class="ar-badge-new">Kerajinan</div></div>
             <div class="ar-obj-info">
               <span class="ar-obj-category">Kerajinan Tradisional</span>
               <div class="ar-obj-name">Bakul</div>
               <div class="ar-obj-shape">📐 Kubus</div>
             </div>
-            <a class="btn-lihat-ar" href="https://asblr.com/14RqVB" target="_blank" rel="noopener">
-              🔮 Lihat AR
-            </a>
+            <a class="btn-lihat-ar" href="https://asblr.com/14RqVB" target="_blank" rel="noopener">🔮 Lihat AR</a>
           </div>
-
-          <!-- Roko-Roko -->
           <div class="ar-obj-card">
-            <div class="ar-obj-thumb bg-roko">
-              🍃
-              <div class="ar-badge-new">Makanan</div>
-            </div>
+            <div class="ar-obj-thumb bg-roko">🍃<div class="ar-badge-new">Makanan</div></div>
             <div class="ar-obj-info">
               <span class="ar-obj-category">Makanan Tradisional</span>
               <div class="ar-obj-name">Roko-Roko</div>
               <div class="ar-obj-shape">📐 Limas</div>
             </div>
-            <a class="btn-lihat-ar" href="https://asblr.com/0maMQV" target="_blank" rel="noopener">
-              🔮 Lihat AR
-            </a>
+            <a class="btn-lihat-ar" href="https://asblr.com/0maMQV" target="_blank" rel="noopener">🔮 Lihat AR</a>
           </div>
-
         </div>
       </section>
 
@@ -881,8 +837,6 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
           <p class="hero-desc">Temukan hubungan antara budaya lokal dan bangun ruang 3D</p>
         </div>
         <div class="budaya-list">
-
-          <!-- 1. Rumah Adat Bugis -->
           <div class="budaya-card" onclick="toggleBudaya(this)">
             <div class="budaya-header">
               <div class="budaya-emoji">🏠</div>
@@ -891,26 +845,12 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
               <span class="budaya-arrow">›</span>
             </div>
             <div class="budaya-detail">
-              <div class="budaya-section">
-                <div class="bd-label">📖 Tentang Budaya</div>
-                <p>Rumah Adat Bugis (Saoraja) adalah rumah panggung tradisional suku Bugis dari Sulawesi Selatan. Dibangun di atas tiang-tiang kayu dengan bentuk persegi panjang dan atap yang berbentuk prisma segitiga.</p>
-              </div>
-              <div class="filosofi-box">
-                <div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div>
-                <p>Rumah Adat Bugis bukan sekadar tempat tinggal, melainkan simbol martabat keluarga dan identitas budaya masyarakat Bugis yang menjunjung tinggi nilai kehormatan dan kekeluargaan. Bentuk rumah panggung merupakan penyesuaian terhadap lingkungan, sementara pembagian ruang di dalamnya melambangkan keteraturan hidup, penghormatan kepada tamu, serta hubungan harmonis antara manusia, alam, dan Sang Pencipta.</p>
-              </div>
-              <div class="budaya-section">
-                <div class="bd-label">📐 Bentuk Matematisnya</div>
-                <div class="math-shape-row"><div class="math-shape-badge">Balok (badan rumah)</div><div class="math-shape-badge">Prisma Segitiga (atap)</div></div>
-              </div>
-              <div class="budaya-section">
-                <div class="bd-label">🔗 Hubungan Matematika</div>
-                <p>Badan rumah berbentuk <strong>balok</strong> (6 sisi persegi panjang), sedangkan atapnya berbentuk <strong>prisma segitiga</strong>. Total volume = Volume Balok + Volume Prisma.</p>
-              </div>
+              <div class="budaya-section"><div class="bd-label">📖 Tentang Budaya</div><p>Rumah Adat Bugis (Saoraja) adalah rumah panggung tradisional suku Bugis dari Sulawesi Selatan. Dibangun di atas tiang-tiang kayu dengan bentuk persegi panjang dan atap yang berbentuk prisma segitiga.</p></div>
+              <div class="filosofi-box"><div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div><p>Rumah Adat Bugis bukan sekadar tempat tinggal, melainkan simbol martabat keluarga dan identitas budaya masyarakat Bugis yang menjunjung tinggi nilai kehormatan dan kekeluargaan. Bentuk rumah panggung merupakan penyesuaian terhadap lingkungan, sementara pembagian ruang di dalamnya melambangkan keteraturan hidup, penghormatan kepada tamu, serta hubungan harmonis antara manusia, alam, dan Sang Pencipta.</p></div>
+              <div class="budaya-section"><div class="bd-label">📐 Bentuk Matematisnya</div><div class="math-shape-row"><div class="math-shape-badge">Balok (badan rumah)</div><div class="math-shape-badge">Prisma Segitiga (atap)</div></div></div>
+              <div class="budaya-section"><div class="bd-label">🔗 Hubungan Matematika</div><p>Badan rumah berbentuk <strong>balok</strong> (6 sisi persegi panjang), sedangkan atapnya berbentuk <strong>prisma segitiga</strong>. Total volume = Volume Balok + Volume Prisma.</p></div>
             </div>
           </div>
-
-          <!-- 2. Onde-Onde -->
           <div class="budaya-card" onclick="toggleBudaya(this)">
             <div class="budaya-header">
               <div class="budaya-emoji">🟢</div>
@@ -919,26 +859,12 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
               <span class="budaya-arrow">›</span>
             </div>
             <div class="budaya-detail">
-              <div class="budaya-section">
-                <div class="bd-label">📖 Tentang Budaya</div>
-                <p>Onde-onde adalah kue tradisional berbentuk bola yang terbuat dari tepung ketan, diisi gula merah, dan dibalut kelapa parut berwarna hijau dari daun pandan. Kehadirannya sering ditemukan dalam acara keluarga, kegiatan adat, maupun tradisi masyarakat sebagai sajian kebersamaan.</p>
-              </div>
-              <div class="filosofi-box">
-                <div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div>
-                <p>Bentuk onde-onde yang bulat melambangkan persatuan, keharmonisan, dan keutuhan dalam kehidupan sosial. Selain menjadi makanan tradisional, onde-onde mencerminkan nilai kesederhanaan dan kreativitas masyarakat dalam mengolah bahan pangan lokal menjadi kuliner yang bernilai budaya.</p>
-              </div>
-              <div class="budaya-section">
-                <div class="bd-label">📐 Bentuk Matematisnya</div>
-                <div class="math-shape-row"><div class="math-shape-badge">Bola (bangun bulat sempurna)</div></div>
-              </div>
-              <div class="budaya-section">
-                <div class="bd-label">🔗 Hubungan Matematika</div>
-                <p>Onde-onde memiliki bentuk menyerupai <strong>bola</strong>. Volume adonan = <strong>4/3 × π × r³</strong>. Jika diameternya 3cm (r=1,5cm), maka V ≈ 14,13 cm³.</p>
-              </div>
+              <div class="budaya-section"><div class="bd-label">📖 Tentang Budaya</div><p>Onde-onde adalah kue tradisional berbentuk bola yang terbuat dari tepung ketan, diisi gula merah, dan dibalut kelapa parut berwarna hijau dari daun pandan.</p></div>
+              <div class="filosofi-box"><div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div><p>Bentuk onde-onde yang bulat melambangkan persatuan, keharmonisan, dan keutuhan dalam kehidupan sosial. Selain menjadi makanan tradisional, onde-onde mencerminkan nilai kesederhanaan dan kreativitas masyarakat dalam mengolah bahan pangan lokal menjadi kuliner yang bernilai budaya.</p></div>
+              <div class="budaya-section"><div class="bd-label">📐 Bentuk Matematisnya</div><div class="math-shape-row"><div class="math-shape-badge">Bola (bangun bulat sempurna)</div></div></div>
+              <div class="budaya-section"><div class="bd-label">🔗 Hubungan Matematika</div><p>Onde-onde memiliki bentuk menyerupai <strong>bola</strong>. Volume adonan = <strong>4/3 × π × r³</strong>. Jika diameternya 3cm (r=1,5cm), maka V ≈ 14,13 cm³.</p></div>
             </div>
           </div>
-
-          <!-- 3. Lammang -->
           <div class="budaya-card" onclick="toggleBudaya(this)">
             <div class="budaya-header">
               <div class="budaya-emoji">🎋</div>
@@ -947,26 +873,12 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
               <span class="budaya-arrow">›</span>
             </div>
             <div class="budaya-detail">
-              <div class="budaya-section">
-                <div class="bd-label">📖 Tentang Budaya</div>
-                <p>Lammang adalah makanan khas Sulawesi Selatan yang terbuat dari beras ketan yang dimasak di dalam bambu. Proses memasaknya menggunakan ruas bambu sebagai wadah, menghasilkan bentuk silinder yang khas.</p>
-              </div>
-              <div class="filosofi-box">
-                <div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div>
-                <p>Lammang identik dengan kegiatan adat, perayaan keagamaan, dan tradisi kebersamaan masyarakat Sulawesi Selatan. Proses memasaknya yang menggunakan bambu dan api tradisional mencerminkan kedekatan masyarakat dengan alam serta pemanfaatan sumber daya lokal secara bijaksana. Lammang melambangkan kebersamaan, gotong royong, dan rasa syukur karena biasanya disiapkan dan dinikmati bersama dalam acara keluarga maupun kegiatan adat.</p>
-              </div>
-              <div class="budaya-section">
-                <div class="bd-label">📐 Bentuk Matematisnya</div>
-                <div class="math-shape-row"><div class="math-shape-badge">Tabung (silinder)</div></div>
-              </div>
-              <div class="budaya-section">
-                <div class="bd-label">🔗 Hubungan Matematika</div>
-                <p>Bambu yang digunakan adalah <strong>tabung/silinder</strong>. Volume beras ketan = <strong>π × r² × t</strong>. Bambu dengan r=3cm dan t=20cm mampu menampung sekitar 565 cm³ beras ketan.</p>
-              </div>
+              <div class="budaya-section"><div class="bd-label">📖 Tentang Budaya</div><p>Lammang adalah makanan khas Sulawesi Selatan yang terbuat dari beras ketan yang dimasak di dalam bambu. Proses memasaknya menggunakan ruas bambu sebagai wadah, menghasilkan bentuk silinder yang khas.</p></div>
+              <div class="filosofi-box"><div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div><p>Lammang identik dengan kegiatan adat, perayaan keagamaan, dan tradisi kebersamaan masyarakat Sulawesi Selatan. Proses memasaknya yang menggunakan bambu dan api tradisional mencerminkan kedekatan masyarakat dengan alam serta pemanfaatan sumber daya lokal secara bijaksana.</p></div>
+              <div class="budaya-section"><div class="bd-label">📐 Bentuk Matematisnya</div><div class="math-shape-row"><div class="math-shape-badge">Tabung (silinder)</div></div></div>
+              <div class="budaya-section"><div class="bd-label">🔗 Hubungan Matematika</div><p>Bambu yang digunakan adalah <strong>tabung/silinder</strong>. Volume beras ketan = <strong>π × r² × t</strong>. Bambu dengan r=3cm dan t=20cm mampu menampung sekitar 565 cm³ beras ketan.</p></div>
             </div>
           </div>
-
-          <!-- 4. Topi Petani -->
           <div class="budaya-card" onclick="toggleBudaya(this)">
             <div class="budaya-header">
               <div class="budaya-emoji">👒</div>
@@ -975,26 +887,12 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
               <span class="budaya-arrow">›</span>
             </div>
             <div class="budaya-detail">
-              <div class="budaya-section">
-                <div class="bd-label">📖 Tentang Budaya</div>
-                <p>Topi Petani (caping) adalah topi tradisional yang terbuat dari anyaman bambu atau daun. Digunakan oleh para petani sebagai pelindung dari terik matahari dan hujan saat bekerja di sawah.</p>
-              </div>
-              <div class="filosofi-box">
-                <div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div>
-                <p>Topi petani merupakan bagian dari budaya agraris masyarakat Indonesia yang melambangkan kehidupan yang sederhana, pekerja keras, dan dekat dengan alam. Filosofi yang terkandung mencerminkan ketekunan, kesabaran, dan semangat bekerja untuk memenuhi kebutuhan hidup. Topi petani juga menjadi simbol identitas masyarakat pedesaan dan nilai-nilai kerja keras dalam budaya lokal.</p>
-              </div>
-              <div class="budaya-section">
-                <div class="bd-label">📐 Bentuk Matematisnya</div>
-                <div class="math-shape-row"><div class="math-shape-badge">Kerucut (cone)</div></div>
-              </div>
-              <div class="budaya-section">
-                <div class="bd-label">🔗 Hubungan Matematika</div>
-                <p>Topi petani menyerupai <strong>kerucut</strong>. Luas bahan = <strong>π × r × s</strong>. Dengan r=20cm dan s=25cm, butuh ≈ 1.570,8 cm² anyaman bambu.</p>
-              </div>
+              <div class="budaya-section"><div class="bd-label">📖 Tentang Budaya</div><p>Topi Petani (caping) adalah topi tradisional yang terbuat dari anyaman bambu atau daun. Digunakan oleh para petani sebagai pelindung dari terik matahari dan hujan saat bekerja di sawah.</p></div>
+              <div class="filosofi-box"><div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div><p>Topi petani merupakan bagian dari budaya agraris masyarakat Indonesia yang melambangkan kehidupan yang sederhana, pekerja keras, dan dekat dengan alam. Filosofi yang terkandung mencerminkan ketekunan, kesabaran, dan semangat bekerja untuk memenuhi kebutuhan hidup.</p></div>
+              <div class="budaya-section"><div class="bd-label">📐 Bentuk Matematisnya</div><div class="math-shape-row"><div class="math-shape-badge">Kerucut (cone)</div></div></div>
+              <div class="budaya-section"><div class="bd-label">🔗 Hubungan Matematika</div><p>Topi petani menyerupai <strong>kerucut</strong>. Luas bahan = <strong>π × r × s</strong>. Dengan r=20cm dan s=25cm, butuh ≈ 1.570,8 cm² anyaman bambu.</p></div>
             </div>
           </div>
-
-          <!-- 5. Roko Roko -->
           <div class="budaya-card" onclick="toggleBudaya(this)">
             <div class="budaya-header">
               <div class="budaya-emoji">🍃</div>
@@ -1003,26 +901,12 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
               <span class="budaya-arrow">›</span>
             </div>
             <div class="budaya-detail">
-              <div class="budaya-section">
-                <div class="bd-label">📖 Tentang Budaya</div>
-                <p>Roko-roko adalah makanan tradisional khas Sulawesi Selatan yang dibungkus daun pisang berbentuk limas (piramid). Biasanya berisi campuran tepung ketan dan santan kelapa dengan isian gula merah.</p>
-              </div>
-              <div class="filosofi-box">
-                <div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div>
-                <p>Roko-roko biasa disajikan dalam acara keluarga, kegiatan adat, dan tradisi masyarakat Sulawesi Selatan. Penggunaan daun pisang sebagai pembungkus mencerminkan kearifan lokal dalam memanfaatkan bahan alami yang ramah lingkungan. Filosofi roko-roko menggambarkan nilai kebersamaan, kesederhanaan, dan rasa syukur masyarakat terhadap hasil alam, sekaligus menunjukkan pentingnya menjaga tradisi kuliner sebagai bagian dari identitas budaya daerah.</p>
-              </div>
-              <div class="budaya-section">
-                <div class="bd-label">📐 Bentuk Matematisnya</div>
-                <div class="math-shape-row"><div class="math-shape-badge">Limas Segiempat</div></div>
-              </div>
-              <div class="budaya-section">
-                <div class="bd-label">🔗 Hubungan Matematika</div>
-                <p>Bungkus Roko Roko menyerupai <strong>limas segiempat</strong>. Volume isi = <strong>⅓ × s² × t</strong>. Dengan sisi alas 5cm dan tinggi 8cm, V = ⅓ × 25 × 8 = 66,67 cm³.</p>
-              </div>
+              <div class="budaya-section"><div class="bd-label">📖 Tentang Budaya</div><p>Roko-roko adalah makanan tradisional khas Sulawesi Selatan yang dibungkus daun pisang berbentuk limas (piramid). Biasanya berisi campuran tepung ketan dan santan kelapa dengan isian gula merah.</p></div>
+              <div class="filosofi-box"><div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div><p>Roko-roko biasa disajikan dalam acara keluarga, kegiatan adat, dan tradisi masyarakat Sulawesi Selatan. Penggunaan daun pisang sebagai pembungkus mencerminkan kearifan lokal dalam memanfaatkan bahan alami yang ramah lingkungan.</p></div>
+              <div class="budaya-section"><div class="bd-label">📐 Bentuk Matematisnya</div><div class="math-shape-row"><div class="math-shape-badge">Limas Segiempat</div></div></div>
+              <div class="budaya-section"><div class="bd-label">🔗 Hubungan Matematika</div><p>Bungkus Roko Roko menyerupai <strong>limas segiempat</strong>. Volume isi = <strong>⅓ × s² × t</strong>. Dengan sisi alas 5cm dan tinggi 8cm, V = ⅓ × 25 × 8 = 66,67 cm³.</p></div>
             </div>
           </div>
-
-          <!-- 6. Bakul -->
           <div class="budaya-card" onclick="toggleBudaya(this)">
             <div class="budaya-header">
               <div class="budaya-emoji">🧺</div>
@@ -1031,25 +915,12 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
               <span class="budaya-arrow">›</span>
             </div>
             <div class="budaya-detail">
-              <div class="budaya-section">
-                <div class="bd-label">📖 Tentang Budaya</div>
-                <p>Bakul adalah wadah tradisional berbentuk kotak yang dibuat dari anyaman bambu. Kerajinan tangan khas Jawa dan Sulawesi ini digunakan sebagai tempat makanan, sesaji, atau oleh-oleh dalam berbagai upacara adat dan hajatan.</p>
-              </div>
-              <div class="filosofi-box">
-                <div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div>
-                <p>Bakul melambangkan kesederhanaan, kemandirian, dan kemampuan memanfaatkan alam secara bijaksana. Proses pembuatannya yang dilakukan secara manual menunjukkan nilai ketelitian, kesabaran, dan keterampilan yang diwariskan antar generasi. Bakul juga mencerminkan budaya gotong royong dan kehidupan masyarakat yang erat dengan aktivitas pertanian dan perdagangan tradisional.</p>
-              </div>
-              <div class="budaya-section">
-                <div class="bd-label">📐 Bentuk Matematisnya</div>
-                <div class="math-shape-row"><div class="math-shape-badge">Kubus (6 sisi persegi)</div></div>
-              </div>
-              <div class="budaya-section">
-                <div class="bd-label">🔗 Hubungan Matematika</div>
-                <p>Bakul memiliki bentuk <strong>kubus</strong>. Volume isi bakul = <strong>s³</strong>. Misalnya bakul dengan sisi 12cm dapat menampung V = 12³ = <strong>1.728 cm³</strong> makanan. Luas permukaan = <strong>6 × s²</strong> = 6 × 144 = <strong>864 cm²</strong>.</p>
-              </div>
+              <div class="budaya-section"><div class="bd-label">📖 Tentang Budaya</div><p>Bakul adalah wadah tradisional berbentuk kotak yang dibuat dari anyaman bambu. Kerajinan tangan khas Jawa dan Sulawesi ini digunakan sebagai tempat makanan, sesaji, atau oleh-oleh dalam berbagai upacara adat dan hajatan.</p></div>
+              <div class="filosofi-box"><div class="filosofi-label">🌿 Filosofi & Nilai Budaya</div><p>Bakul melambangkan kesederhanaan, kemandirian, dan kemampuan memanfaatkan alam secara bijaksana. Proses pembuatannya yang dilakukan secara manual menunjukkan nilai ketelitian, kesabaran, dan keterampilan yang diwariskan antar generasi.</p></div>
+              <div class="budaya-section"><div class="bd-label">📐 Bentuk Matematisnya</div><div class="math-shape-row"><div class="math-shape-badge">Kubus (6 sisi persegi)</div></div></div>
+              <div class="budaya-section"><div class="bd-label">🔗 Hubungan Matematika</div><p>Bakul memiliki bentuk <strong>kubus</strong>. Volume isi bakul = <strong>s³</strong>. Misalnya bakul dengan sisi 12cm dapat menampung V = 12³ = <strong>1.728 cm³</strong> makanan. Luas permukaan = <strong>6 × s²</strong> = 6 × 144 = <strong>864 cm²</strong>.</p></div>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -1061,6 +932,8 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
           <p class="hero-desc">Cara menggunakan GeoCulture AR secara lengkap</p>
         </div>
         <div class="panduan-list">
+
+          <!-- 01: Navigasi Menu -->
           <div class="panduan-section">
             <div class="panduan-section-title"><span class="ps-num">01</span><span>Navigasi Menu</span></div>
             <div class="steps-list">
@@ -1070,16 +943,37 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
               <div class="step-card"><div class="step-num">4</div><div class="step-content"><strong>Budaya</strong> — Temukan koneksi menarik antara budaya lokal dan matematika.</div></div>
             </div>
           </div>
+
+          <!-- 02: Cara Melihat AR (DIPERBARUI) -->
           <div class="panduan-section">
             <div class="panduan-section-title"><span class="ps-num">02</span><span>Cara Melihat AR</span></div>
+            <p style="font-size:12px;color:var(--gray-400);margin-bottom:12px;font-weight:500;">Pengguna dapat melihat objek AR dengan dua cara:</p>
+
+            <!-- Cara 1 -->
+            <div class="ar-cara-label">
+              <span class="ar-cara-badge">Cara 1</span> Melalui Scan Kamera
+            </div>
+            <div class="steps-list" style="margin-bottom:16px;">
+              <div class="step-card accent"><div class="step-num">1</div><div class="step-content">Buka menu <strong>AR Scan</strong> pada navigasi bawah aplikasi.</div></div>
+              <div class="step-card accent"><div class="step-num">2</div><div class="step-content">Arahkan kamera ke <strong>barcode/QR code</strong> objek budaya yang ingin dilihat.</div></div>
+              <div class="step-card accent"><div class="step-num">3</div><div class="step-content">Barcode dapat dipindai langsung melalui kamera perangkat atau menggunakan <strong>Google Lens / Scanner Google</strong>.</div></div>
+              <div class="step-card accent"><div class="step-num">4</div><div class="step-content">Setelah halaman AR terbuka, tekan opsi <strong>"Tampilkan di Ruangan"</strong>.</div></div>
+              <div class="step-card accent"><div class="step-num">5</div><div class="step-content">Arahkan kamera ke <strong>area datar</strong> di sekitar Anda, lalu tunggu hingga objek AR muncul dan ditempatkan di ruangan.</div></div>
+            </div>
+
+            <!-- Cara 2 -->
+            <div class="ar-cara-label">
+              <span class="ar-cara-badge">Cara 2</span> Melalui Tombol "Lihat AR"
+            </div>
             <div class="steps-list">
-              <div class="step-card accent"><div class="step-num">1</div><div class="step-content">Buka halaman <strong>AR Scan</strong> dari menu navigasi bawah.</div></div>
-              <div class="step-card accent"><div class="step-num">2</div><div class="step-content">Pilih objek budaya yang ingin dilihat dari grid kartu objek.</div></div>
-              <div class="step-card accent"><div class="step-num">3</div><div class="step-content">Tekan tombol <strong>"🔮 Lihat AR"</strong> pada kartu objek yang dipilih.</div></div>
-              <div class="step-card accent"><div class="step-num">4</div><div class="step-content">Browser akan membuka link AR secara langsung di perangkat Anda.</div></div>
-              <div class="step-card accent"><div class="step-num">5</div><div class="step-content">Untuk scan via kamera, tekan <strong>"Buka Kamera"</strong> dan izinkan akses kamera.</div></div>
+              <div class="step-card accent"><div class="step-num">1</div><div class="step-content">Pilih objek budaya pada daftar atau kartu objek.</div></div>
+              <div class="step-card accent"><div class="step-num">2</div><div class="step-content">Tekan tombol <strong>"🔮 Lihat AR"</strong> pada kartu objek.</div></div>
+              <div class="step-card accent"><div class="step-num">3</div><div class="step-content">Pilih opsi <strong>"Tampilkan di Ruangan"</strong>.</div></div>
+              <div class="step-card accent"><div class="step-num">4</div><div class="step-content">Arahkan kamera ke <strong>area datar</strong> di sekitar Anda, lalu tunggu hingga objek AR muncul dan ditempatkan di ruangan.</div></div>
             </div>
           </div>
+
+          <!-- 03: Cara Belajar Materi -->
           <div class="panduan-section">
             <div class="panduan-section-title"><span class="ps-num">03</span><span>Cara Belajar Materi</span></div>
             <div class="steps-list">
@@ -1089,6 +983,8 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
               <div class="step-card"><div class="step-num">4</div><div class="step-content">Cek hint budaya di bawah card untuk menghubungkan dengan kehidupan nyata.</div></div>
             </div>
           </div>
+
+          <!-- 04: Cara Mengerjakan Latihan -->
           <div class="panduan-section">
             <div class="panduan-section-title"><span class="ps-num">04</span><span>Cara Mengerjakan Latihan</span></div>
             <div class="steps-list">
@@ -1099,6 +995,7 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
               <div class="step-card"><div class="step-num">5</div><div class="step-content">Lihat skor akhir dan nilai kamu. Tekan "Ulangi" untuk mencoba lagi!</div></div>
             </div>
           </div>
+
           <div class="panduan-section">
             <div class="developer-credit">
               <div class="dev-icon">👨‍💻</div>
@@ -1107,6 +1004,7 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
               <div class="dev-desc">GeoCulture AR · Etnomatematika &amp; Teknologi</div>
             </div>
           </div>
+
         </div>
       </section>
 
@@ -1124,7 +1022,6 @@ body { display: flex; justify-content: center; align-items: flex-start; min-heig
     </nav>
   </div>
 
-  <!-- Toast -->
   <div id="toast" class="toast"></div>
 
   <script>
@@ -1144,7 +1041,6 @@ function navigate(pageName, navEl) {
   if (target) target.classList.add('active');
   if (navEl) navEl.classList.add('active');
   document.querySelector('.page-container').scrollTop = 0;
-  /* Stop camera if leaving AR page */
   if (pageName !== 'ar') stopCamera();
 }
 
@@ -1156,7 +1052,7 @@ function showToast(msg, duration = 2600) {
   setTimeout(() => t.classList.remove('show'), duration);
 }
 
-/* ===== GOOGLE SEARCH (REVISED — replaces Google Lens) ===== */
+/* ===== GOOGLE SEARCH ===== */
 function openGoogleSearch() {
   window.open('https://www.google.com/', '_blank');
 }
@@ -1166,11 +1062,7 @@ let cameraStream = null;
 let cameraActive = false;
 
 async function toggleCamera() {
-  if (cameraActive) {
-    stopCamera();
-  } else {
-    await startCamera();
-  }
+  if (cameraActive) { stopCamera(); } else { await startCamera(); }
 }
 
 async function startCamera() {
@@ -1179,18 +1071,11 @@ async function startCamera() {
     return;
   }
   try {
-    const constraints = {
-      video: {
-        facingMode: { ideal: 'environment' }, /* prefer rear camera */
-        width:  { ideal: 1280 },
-        height: { ideal: 720 }
-      }
-    };
+    const constraints = { video: { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 720 } } };
     cameraStream = await navigator.mediaDevices.getUserMedia(constraints);
     const video = document.getElementById('camera-video');
     video.srcObject = cameraStream;
     await video.play();
-
     cameraActive = true;
     document.getElementById('camera-preview-wrap').classList.add('active');
     document.getElementById('btn-cam-toggle').classList.add('active-cam');
@@ -1201,26 +1086,17 @@ async function startCamera() {
     showToast('📷 Kamera aktif! Arahkan ke objek AR.');
   } catch (err) {
     let msg = '⚠️ Gagal membuka kamera.';
-    if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
-      msg = '🚫 Akses kamera ditolak. Izinkan kamera di pengaturan browser.';
-    } else if (err.name === 'NotFoundError') {
-      msg = '📷 Kamera tidak ditemukan di perangkat ini.';
-    } else if (err.name === 'NotReadableError') {
-      msg = '⚠️ Kamera sedang digunakan aplikasi lain.';
-    }
+    if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') msg = '🚫 Akses kamera ditolak. Izinkan kamera di pengaturan browser.';
+    else if (err.name === 'NotFoundError') msg = '📷 Kamera tidak ditemukan di perangkat ini.';
+    else if (err.name === 'NotReadableError') msg = '⚠️ Kamera sedang digunakan aplikasi lain.';
     showToast(msg, 3500);
-    console.error('Camera error:', err);
   }
 }
 
 function stopCamera() {
-  if (cameraStream) {
-    cameraStream.getTracks().forEach(track => track.stop());
-    cameraStream = null;
-  }
+  if (cameraStream) { cameraStream.getTracks().forEach(track => track.stop()); cameraStream = null; }
   const video = document.getElementById('camera-video');
   if (video) video.srcObject = null;
-
   cameraActive = false;
   document.getElementById('camera-preview-wrap').classList.remove('active');
   document.getElementById('btn-cam-toggle').classList.remove('active-cam');
@@ -1233,28 +1109,20 @@ function capturePhoto() {
   if (!cameraActive) return;
   const video = document.getElementById('camera-video');
   const canvas = document.createElement('canvas');
-  canvas.width  = video.videoWidth  || 640;
+  canvas.width = video.videoWidth || 640;
   canvas.height = video.videoHeight || 480;
-  const ctx = canvas.getContext('2d');
-  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-  /* Visual flash effect */
+  canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
   const flash = document.createElement('div');
   flash.style.cssText = 'position:fixed;inset:0;background:#fff;opacity:0.85;z-index:9998;pointer-events:none;transition:opacity 0.35s ease;';
   document.body.appendChild(flash);
   setTimeout(() => { flash.style.opacity = '0'; setTimeout(() => flash.remove(), 400); }, 80);
-
   showToast('📸 Foto berhasil diambil!');
-
-  /* Optional: download the captured photo */
   try {
     const link = document.createElement('a');
     link.download = 'geoculture-ar-scan.jpg';
     link.href = canvas.toDataURL('image/jpeg', 0.9);
     link.click();
-  } catch(e) {
-    /* Silently fail if download blocked (e.g. in some webviews) */
-  }
+  } catch(e) {}
 }
 
 /* ===== BUDAYA TOGGLE ===== */
@@ -1275,99 +1143,65 @@ function getTabungHTML()  { return `<div class="shape3d-wrap"><canvas id="canvas
 function getPrismaHTML()  { return `<div class="shape3d-wrap"><canvas id="canvas-prisma"  width="140" height="130" style="display:block;"></canvas></div>`; }
 function getLimasHTML()   { return `<div class="shape3d-wrap"><canvas id="canvas-limas"   width="140" height="130" style="display:block;"></canvas></div>`; }
 function getKerucutHTML() { return `<div class="shape3d-wrap"><canvas id="canvas-kerucut" width="120" height="130" style="display:block;"></canvas></div>`; }
-function getBolaHTML() {
-  return `<div class="shape3d-wrap"><div class="scene-bola"><div class="bola3d"></div></div></div>`;
-}
+function getBolaHTML()    { return `<div class="shape3d-wrap"><div class="scene-bola"><div class="bola3d"></div></div></div>`; }
 
 /* ===== MATERI DATA ===== */
 const materiData = {
   prisma: {
     icon:'▲', headerClass:'prisma', name:'Prisma',
     def:'Bangun ruang yang memiliki dua sisi sejajar berbentuk poligon (alas dan tutup) yang identik, serta sisi-sisi tegak berbentuk persegi panjang.',
-    rumus:[
-      { label:'📦 Volume',        formula:'V = Luas Alas × Tinggi' },
-      { label:'📐 Luas Permukaan', formula:'LP = 2 × Luas Alas + Keliling Alas × t' }
-    ],
+    rumus:[{label:'📦 Volume',formula:'V = Luas Alas × Tinggi'},{label:'📐 Luas Permukaan',formula:'LP = 2 × Luas Alas + Keliling Alas × t'}],
     soal:'Prisma segitiga dengan alas segitiga siku-siku (a=3cm, b=4cm), tinggi prisma 10cm. Hitung Volume!',
     pembahasan:['Luas alas = ½ × 3 × 4 = <strong>6 cm²</strong>','Volume = 6 × 10 = <strong>60 cm³</strong>'],
-    hint:'🏠 Seperti bentuk atap <strong>Rumah Adat Bugis</strong>',
-    shape3d: getPrismaHTML()
+    hint:'🏠 Seperti bentuk atap <strong>Rumah Adat Bugis</strong>', shape3d: getPrismaHTML()
   },
   balok: {
     icon:'▬', headerClass:'balok', name:'Balok',
     def:'Bangun ruang tiga dimensi yang dibentuk oleh tiga pasang persegi panjang, masing-masing pasang kongruen dan sejajar.',
-    rumus:[
-      { label:'📦 Volume',        formula:'V = p × l × t' },
-      { label:'📐 Luas Permukaan', formula:'LP = 2(pl + pt + lt)' }
-    ],
+    rumus:[{label:'📦 Volume',formula:'V = p × l × t'},{label:'📐 Luas Permukaan',formula:'LP = 2(pl + pt + lt)'}],
     soal:'Balok dengan panjang 8cm, lebar 5cm, tinggi 3cm. Hitung Volume dan Luas Permukaan!',
     pembahasan:['V = 8 × 5 × 3 = <strong>120 cm³</strong>','LP = 2(40+24+15) = 2×79 = <strong>158 cm²</strong>'],
-    hint:'🏠 Seperti badan <strong>Rumah Adat Bugis</strong>',
-    shape3d: getBalokHTML()
+    hint:'🏠 Seperti badan <strong>Rumah Adat Bugis</strong>', shape3d: getBalokHTML()
   },
   tabung: {
     icon:'⬛', headerClass:'tabung', name:'Tabung',
     def:'Bangun ruang tiga dimensi yang memiliki dua sisi lingkaran sejajar yang identik (alas dan tutup) dan dihubungkan oleh sisi lengkung.',
-    rumus:[
-      { label:'📦 Volume',        formula:'V = π × r² × t' },
-      { label:'📐 Luas Permukaan', formula:'LP = 2πr(r + t)' }
-    ],
+    rumus:[{label:'📦 Volume',formula:'V = π × r² × t'},{label:'📐 Luas Permukaan',formula:'LP = 2πr(r + t)'}],
     soal:'Tabung dengan jari-jari 7cm dan tinggi 10cm. Hitung Volume! (π=22/7)',
     pembahasan:['V = 22/7 × 49 × 10','V = 22 × 7 × 10 = <strong>1.540 cm³</strong>'],
-    hint:'🍚 Seperti bentuk bambu <strong>Lammang</strong>',
-    shape3d: getTabungHTML()
+    hint:'🍚 Seperti bentuk bambu <strong>Lammang</strong>', shape3d: getTabungHTML()
   },
   limas: {
     icon:'△', headerClass:'limas', name:'Limas',
     def:'Bangun ruang yang alasnya berbentuk poligon dan sisi-sisi tegaknya berbentuk segitiga yang bertemu di satu titik puncak.',
-    rumus:[
-      { label:'📦 Volume',        formula:'V = ⅓ × Luas Alas × t' },
-      { label:'📐 Luas Permukaan', formula:'LP = Luas Alas + Jumlah Luas Sisi Tegak' }
-    ],
+    rumus:[{label:'📦 Volume',formula:'V = ⅓ × Luas Alas × t'},{label:'📐 Luas Permukaan',formula:'LP = Luas Alas + Jumlah Luas Sisi Tegak'}],
     soal:'Limas segiempat alas 6×6cm, tinggi 8cm. Hitung Volume!',
     pembahasan:['Luas alas = 6×6 = 36 cm²','V = ⅓ × 36 × 8 = <strong>96 cm³</strong>'],
-    hint:'🍃 Seperti bentuk bungkus <strong>Roko Roko</strong>',
-    shape3d: getLimasHTML()
+    hint:'🍃 Seperti bentuk bungkus <strong>Roko Roko</strong>', shape3d: getLimasHTML()
   },
   kerucut: {
     icon:'🔺', headerClass:'kerucut', name:'Kerucut',
     def:'Bangun ruang tiga dimensi dengan alas lingkaran dan permukaan samping yang meruncing ke satu titik puncak.',
-    rumus:[
-      { label:'📦 Volume',        formula:'V = ⅓ × π × r² × t' },
-      { label:'📐 Luas Permukaan', formula:'LP = πr(r + s),  s = garis pelukis' }
-    ],
+    rumus:[{label:'📦 Volume',formula:'V = ⅓ × π × r² × t'},{label:'📐 Luas Permukaan',formula:'LP = πr(r + s),  s = garis pelukis'}],
     soal:'Kerucut dengan jari-jari 6cm dan tinggi 8cm. Hitung Volume! (π=3,14)',
     pembahasan:['V = ⅓ × 3,14 × 36 × 8','V = ⅓ × 904,32 = <strong>301,44 cm³</strong>'],
-    hint:'👒 Seperti bentuk <strong>Topi Petani</strong>',
-    shape3d: getKerucutHTML()
+    hint:'👒 Seperti bentuk <strong>Topi Petani</strong>', shape3d: getKerucutHTML()
   },
   bola: {
     icon:'⬤', headerClass:'bola', name:'Bola',
     def:'Bangun ruang tiga dimensi yang seluruh permukaannya berjarak sama dari satu titik pusat (titik tengah bola).',
-    rumus:[
-      { label:'📦 Volume',        formula:'V = 4/3 × π × r³' },
-      { label:'📐 Luas Permukaan', formula:'LP = 4 × π × r²' }
-    ],
+    rumus:[{label:'📦 Volume',formula:'V = 4/3 × π × r³'},{label:'📐 Luas Permukaan',formula:'LP = 4 × π × r²'}],
     soal:'Bola dengan jari-jari 9cm. Hitung Volume dan Luas Permukaan! (π=3,14)',
     pembahasan:['V = 4/3 × 3,14 × 729 = <strong>3.052,08 cm³</strong>','LP = 4 × 3,14 × 81 = <strong>1.017,36 cm²</strong>'],
-    hint:'🟢 Seperti bentuk <strong>Onde-onde</strong>',
-    shape3d: getBolaHTML()
+    hint:'🟢 Seperti bentuk <strong>Onde-onde</strong>', shape3d: getBolaHTML()
   },
   kubus: {
     icon:'🧊', headerClass:'kubus', name:'Kubus',
     def:'Bangun ruang tiga dimensi yang dibentuk oleh 6 sisi berbentuk persegi yang sama besar dan kongruen. Kubus memiliki 8 titik sudut, 12 rusuk, dan 6 sisi.',
-    rumus:[
-      { label:'📦 Volume',         formula:'V = s³ (s = panjang sisi)' },
-      { label:'📐 Luas Permukaan',  formula:'LP = 6 × s²' },
-      { label:'📏 Diagonal Ruang',  formula:'d = s√3' }
-    ],
+    rumus:[{label:'📦 Volume',formula:'V = s³ (s = panjang sisi)'},{label:'📐 Luas Permukaan',formula:'LP = 6 × s²'},{label:'📏 Diagonal Ruang',formula:'d = s√3'}],
     soal:'Bakul (kerajinan anyaman bambu) berbentuk kubus dengan sisi 12cm. Hitung Volume dan Luas Permukaan!',
-    pembahasan:[
-      'V = s³ = 12³ = 12 × 12 × 12 = <strong>1.728 cm³</strong>',
-      'LP = 6 × s² = 6 × 144 = <strong>864 cm²</strong>'
-    ],
-    hint:'🧺 Seperti bentuk <strong>Bakul</strong> (wadah anyaman bambu tradisional)',
-    shape3d: getKubusHTML()
+    pembahasan:['V = s³ = 12³ = 12 × 12 × 12 = <strong>1.728 cm³</strong>','LP = 6 × s² = 6 × 144 = <strong>864 cm²</strong>'],
+    hint:'🧺 Seperti bentuk <strong>Bakul</strong> (wadah anyaman bambu tradisional)', shape3d: getKubusHTML()
   }
 };
 
@@ -1432,9 +1266,9 @@ function animateLimas() {
   function draw() {
     var c = document.getElementById('canvas-limas'); if (!c) return;
     var ctx = c.getContext('2d'); angle += 0.020;
-    var cx=70, cy=68, cos=Math.cos(angle), sin=Math.sin(angle), hs=36, apex_y=-46, floor_y=26;
+    var cx=70, cy=68, cos=Math.cos(angle), sin=Math.sin(angle), hs=36, floor_y=26;
     ctx.clearRect(0,0,140,130);
-    var A=proj(cx,cy,-hs,floor_y,-hs,cos,sin), B=proj(cx,cy,hs,floor_y,-hs,cos,sin), C=proj(cx,cy,hs,floor_y,hs,cos,sin), D=proj(cx,cy,-hs,floor_y,hs,cos,sin), P=proj(cx,cy,0,apex_y,0,cos,sin);
+    var A=proj(cx,cy,-hs,floor_y,-hs,cos,sin), B=proj(cx,cy,hs,floor_y,-hs,cos,sin), C=proj(cx,cy,hs,floor_y,hs,cos,sin), D=proj(cx,cy,-hs,floor_y,hs,cos,sin), P=proj(cx,cy,0,-46,0,cos,sin);
     ctx.beginPath(); ctx.moveTo(A.x,A.y); ctx.lineTo(B.x,B.y); ctx.lineTo(C.x,C.y); ctx.lineTo(D.x,D.y); ctx.closePath();
     ctx.fillStyle='rgba(22,163,74,0.18)'; ctx.fill(); ctx.strokeStyle='rgba(22,163,74,0.7)'; ctx.lineWidth=1.8; ctx.stroke();
     [{pts:[A,B,P],fill:'rgba(22,163,74,0.24)'},{pts:[B,C,P],fill:'rgba(22,163,74,0.15)'},{pts:[C,D,P],fill:'rgba(22,163,74,0.10)'},{pts:[D,A,P],fill:'rgba(22,163,74,0.20)'}].forEach(function(f){
@@ -1593,11 +1427,7 @@ function showResult() {
 function retryQuiz(){document.getElementById('quiz-result').classList.add('hidden');startQuiz();}
 
 document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') stopCamera(); });
-
-/* Stop camera when page is hidden (user switches tab) */
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) stopCamera();
-});
+document.addEventListener('visibilitychange', () => { if (document.hidden) stopCamera(); });
   </script>
 </body>
 </html>
